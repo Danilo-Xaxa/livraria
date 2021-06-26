@@ -7,6 +7,9 @@ meu_app = Flask(__name__)
 def index():
     if request.method == 'GET':
         return render_template('index.html')
-        
+
     elif request.method == 'POST':
-        return render_template('cumprimento.html', nome=request.form.get('nome', 'mundo'))
+        if not request.form.get('nome') or request.form.get('nome').strip() == '':
+            return render_template('erro.html')
+        else:
+            return render_template('cumprimento.html', nome=request.form.get('nome'))
