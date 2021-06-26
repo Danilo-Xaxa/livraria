@@ -7,6 +7,6 @@ def index():
     return render_template('index.html')
 
 
-@meu_app.route('/cumprimento/')
+@meu_app.route('/cumprimento/', methods=["POST"])
 def cumprimento():
-    return render_template('cumprimento.html', nome=request.args.get('nome', 'mundo'))
+    return render_template('cumprimento.html', nome=request.form.get('nome', 'mundo'))
