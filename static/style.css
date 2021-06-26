@@ -1,0 +1,20 @@
+body {
+    background-color: #E5BA12;
+}
+
+h1, p, a {
+    font-size: 4em;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+input {
+  width: 100%;
+  padding: 12px 0;
+  margin: 8px 0;
+}
