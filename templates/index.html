@@ -7,9 +7,11 @@
 {% endblock %}
 
 {% block corpo %}
-    <h1>Bem vindos ao formulário!</h1>
+    <h1>Digite seu nome...</h1>
     <form action="/" method="post">
-        <input name="nome" placeholder="Nome" autofocus type="text">
-        <input type="submit">
+        <div id="form">
+        <input name="nome" autofocus type="text">
+        <input type="submit" value="Entrar">
+        </div>
     </form>
 {% endblock %}
