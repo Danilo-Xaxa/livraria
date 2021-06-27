@@ -9,7 +9,10 @@ def index():
         return render_template('index.html')
 
     elif request.method == 'POST':
-        if not request.form.get('nome') or request.form.get('nome').strip() == '':
-            return render_template('erro.html')
-        else:
-            return render_template('cumprimento.html', nome=request.form.get('nome'))
+        if not request.form.get('nome').strip():
+            return render_template('erro.html', texto_erro='Você não tem nome?')
+
+        elif not request.form.get('humor'):
+            return render_template('erro.html', texto_erro='Você não tem emoções?')
+
+        return render_template('cumprimento.html', nome=request.form.get('nome'), humor=request.form.get('humor'))

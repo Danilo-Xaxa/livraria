@@ -7,10 +7,15 @@
 {% endblock %}
 
 {% block corpo %}
-    <h1>Digite seu nome...</h1>
+    <h1>Qual é o seu nome?</h1>
     <form action="/" method="post">
-        <div id="form">
+        <div id="formulario">
         <input name="nome" autofocus type="text">
+        <select name="humor">
+            <option disabled selected>Como você está?</option>
+            <option value="bem">Bem</option>
+            <option value="mal">Mal</option>
+        </select>
         <input type="submit" value="Entrar">
         </div>
     </form>

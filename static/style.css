@@ -21,14 +21,14 @@ a {
     color: red;
 }
 
-#form {
+#formulario {
     display: grid;
     place-items: center;
 }
 
-input {
+input, select {
     font-size: 20px;
-    width: 10%;
+    width: 15%;
     display: block;
     padding: 12px 0;
     margin: 8px 0;
