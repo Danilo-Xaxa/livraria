@@ -19,7 +19,7 @@
             {% for nome, humor in pessoas.items() %}
             <tr>
                 <td scope="row">{{ nome }}</td>
-                <td scope="row">{{ humor }}</td>
+                <td scope="row">{{ humor.capitalize() }}</td>
             </tr>
             {% endfor %}
         </tbody>

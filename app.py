@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from cs50 import *
+from cs50 import SQL
 
 
 pessoas = {}
@@ -13,16 +13,16 @@ def index():
 
     elif request.method == 'POST':
         if not request.form.get('nome').strip():
-            return render_template('erro.html', texto_erro='Você não tem nome?')
+            return render_template('erro.html', msg_erro='Você não tem nome?')
 
         elif not request.form.get('humor'):
-            return render_template('erro.html', texto_erro='Você não tem emoções?')
+            return render_template('erro.html', msg_erro='Você não tem emoções?')
 
         nome = request.form.get('nome').strip()
         humor = request.form.get('humor')
         pessoas[nome] = humor
 
-        return render_template('cumprimento.html', nome=request.form.get('nome'), humor=request.form.get('humor'), pessoas=pessoas)
+        return render_template('cumprimento.html', nome=request.form.get('nome'), humor=request.form.get('humor'))
 
 @meu_app.route('/pessoas/')
 def route_pessoas():
