@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block titulo_links %}
+    <title>Cumprimento</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+{% endblock %}
+
+{% block corpo %}
+<div class="central">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Humor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for nome, humor in pessoas.items() %}
+            <tr>
+                <td scope="row">{{ nome }}</td>
+                <td scope="row">{{ humor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Voltar</a>
+</div>
+{% endblock %}

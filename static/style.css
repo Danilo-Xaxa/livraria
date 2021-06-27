@@ -19,9 +19,11 @@ a {
     font-size: 2.5em;
     text-decoration: none;
     color: red;
+    display: block;
+    margin: 20px auto;
 }
 
-#formulario {
+.central {
     display: grid;
     place-items: center;
 }
@@ -34,4 +36,8 @@ input, select {
     margin: 8px 0;
     border: 0;
     text-align: center;
+}
+
+table {
+    
 }
