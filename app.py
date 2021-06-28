@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 from cs50 import SQL
 from smtplib import SMTP
-from remetente_senha import remetente, senha
+import teste  # deletar saporra dps das env var
+# from os import environ
 # from unidecode import unidecode (usar se o e-mail nao suportar utf-8 ou unicode)
 
 
@@ -34,10 +35,14 @@ def index():
         texto = f"Tu foi registrado, {nome}. Mais um motivo para ficar {humor}!"
         assunto = "Oi!"
         msg = (f"Subject: {assunto}\n\n{texto}")
+        
+        EMAIL_REMETENTE = teste.EMAIL_REMETENTE
+        EMAIL_SENHA = teste.EMAIL_SENHA
+        
         servidor = SMTP("smtp.gmail.com", 587)
         servidor.starttls()
-        servidor.login(remetente, senha)
-        servidor.sendmail(remetente, email, msg)
+        servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
+        servidor.sendmail(EMAIL_REMETENTE, email, msg)
 
         return render_template('cumprimento.html', nome=nome, humor=humor)
 
