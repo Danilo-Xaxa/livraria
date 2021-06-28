@@ -30,14 +30,10 @@ a {
 
 input, select {
     font-size: 20px;
-    width: 15%;
+    width: 20%;
     display: block;
     padding: 12px 0;
     margin: 8px 0;
     border: 0;
     text-align: center;
-}
-
-table {
-    
 }

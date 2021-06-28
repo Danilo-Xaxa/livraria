@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
 
-{% block titulo_links %}
+{% block final_head %}
     <title>Formulário</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
 {% endblock %}
 
 {% block corpo %}
-    <h1>Qual é o seu nome?</h1>
+    <h1>Qual é o seu nome e e-mail?</h1>
     <form action="/" method="post">
         <div class="central">
-        <input name="nome" autofocus type="text">
+        <input name="nome" autofocus placeholder="Nome" type="text">
+        <input name="email" autofocus placeholder="E-mail" type="email">
         <select name="humor">
             <option disabled selected>Como você está?</option>
             <option value="bem">Bem</option>
