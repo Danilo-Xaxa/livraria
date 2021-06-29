@@ -59,6 +59,9 @@ def route_cadastrar():
     servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
     servidor.sendmail(EMAIL_REMETENTE, email, msg_email)
 
+    global fez
+    fez = 'se cadastrou'
+
     return redirect('/pessoas/')
 
 
@@ -89,12 +92,15 @@ def route_entrar():
         msg_erro = 'Senha incorreta! Tente novamente.'
         return render_template('erro.html', msg_erro=msg_erro)
 
+    global fez
+    fez = 'entrou'
+
     return redirect('/pessoas/')
 
 
 @meu_app.route('/pessoas/')
 def route_pessoas():
-    msg = 'Parabéns! Você se cadastrou ou entrou com sucesso!'  # TODO: Personalizar mais a msg
+    msg = f'Parabéns! Você {fez} com sucesso!'  # TODO: Personalizar mais a msg
 
     linhas = db.execute("SELECT nome, email FROM registrados")
 

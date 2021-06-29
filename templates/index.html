@@ -1,17 +1,15 @@
 {% extends "layout.html" %}
 
 {% block final_head %}
-    <title>Index</title>
+    <title>Olá!</title>
     <link rel="stylesheet" href="static/style.css">
-    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
-    <script src="static/scriptIndex.js"></script>
 {% endblock %}
 
 {% block corpo %}
-    <h1>Bom dia/tarde/noite/madrugada</h1> <!-- USAR UM JS BEM BOLADO (MUDAR A COR TBM???)-->
+    <h1 id="bomHorario">Bom o quê?</h1>
     <form action="/" method="post">
         <div class="central">
-            <select name="escolha">
+            <select name="escolha"> <!-- TODO: Usar botões "Cadastrar" e "Entrar"-->
                 <option selected disabled>Cadastrar ou Entrar?</option>
                 <option value="cadastrar">Cadastrar</option>
                 <option value="entrar">Entrar</option>
