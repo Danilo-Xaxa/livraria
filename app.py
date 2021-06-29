@@ -109,7 +109,7 @@ def route_entrar():
             senhas_registradas.append(linha['senha'])
 
         if email not in emails_registrados:
-            msg_erro = 'E-mail incorreto! Tente novamente.'
+            msg_erro = 'E-mail não cadastrado! Tente novamente.'
             return redirect('/erro')
         elif senha not in senhas_registradas:
             msg_erro = 'Senha incorreta! Tente novamente.'
@@ -122,11 +122,11 @@ def route_entrar():
 
 @meu_app.route('/pessoas')
 def route_pessoas():
-    msg = f'Parabéns! Você {fez} com sucesso!'  # TODO: Personalizar mais a msg
+    msg_sucesso = f'Parabéns! Você {fez} com sucesso!'
 
     linhas = db.execute("SELECT nome, email FROM registrados")
 
-    return render_template('pessoas.html', pessoas=linhas, msg=msg)
+    return render_template('pessoas.html', pessoas=linhas, msg=msg_sucesso)
 
 
 @meu_app.route('/erro')

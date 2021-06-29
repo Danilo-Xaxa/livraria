@@ -6,30 +6,34 @@ function horarioFavicon() {
     hora = String(hora).length == 1? '0' + hora : hora
     minuto = String(minuto).length == 1? '0' + minuto : minuto
 
-    hora = 03
-
     let meuFavicon
-    let bomHorario
+    let msgBomHorario
 
     if (hora > 0 && hora < 5) {
-        document.getElementById('bomHorario').style.color = 'white'
+        corBomHorario = white
         document.body.style.background = 'black'
         meuFavicon = '../static/favicons/favicon-madrugada.ico'
-        bomHorario = 'Boa madrugada!'
+        msgBomHorario = 'Boa madrugada!'
     } else if (hora < 12) {
         document.body.style.background = 'rgb(112, 168, 187)'
         meuFavicon = '../static/favicons/favicon-manha.ico'
-        bomHorario = 'Bom dia!'
+        msgBomHorario = 'Bom dia!'
     } else if (hora < 18) {
         document.body.style.background = 'orange'
         meuFavicon = '../static/favicons/favicon-tarde.ico'
-        bomHorario = 'Boa tarde!'
+        msgBomHorario = 'Boa tarde!'
     } else if (hora <= 24) {
-        document.getElementById('bomHorario').style.color = 'white'
+        corBomHorario = 'white'
         document.body.style.background = 'purple'
         meuFavicon = '../static/favicons/favicon-noite.ico'
-        bomHorario = 'Boa noite!'
+        msgBomHorario = 'Boa noite!'
     }
+
+    try {
+        let bomHorario = document.getElementById('bomHorario')
+        bomHorario.innerText = `${msgBomHorario}`
+        bomHorario.style.color = `${corBomHorario}` || 'black'
+    } catch(e) {}
 
     let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -38,14 +42,6 @@ function horarioFavicon() {
     head = document.getElementsByTagName('head')[0]
     head.appendChild(link);
 
-    return bomHorario
 }
 
-minhaVar = horarioFavicon()
-
-function msgBomHorario() {
-    let aqueleH1 = document.getElementById('bomHorario')
-    aqueleH1.innerText = minhaVar
-}
-
-msgBomHorario()
+horarioFavicon()
