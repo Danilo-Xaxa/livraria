@@ -6,11 +6,13 @@ function horarioFavicon() {
     hora = String(hora).length == 1? '0' + hora : hora
     minuto = String(minuto).length == 1? '0' + minuto : minuto
 
+    hora = 03
+
     let meuFavicon
     let bomHorario
 
     if (hora > 0 && hora < 5) {
-        bomHorario.style.color = 'white'
+        document.getElementById('bomHorario').style.color = 'white'
         document.body.style.background = 'black'
         meuFavicon = '../static/favicons/favicon-madrugada.ico'
         bomHorario = 'Boa madrugada!'
@@ -23,7 +25,7 @@ function horarioFavicon() {
         meuFavicon = '../static/favicons/favicon-tarde.ico'
         bomHorario = 'Boa tarde!'
     } else if (hora <= 24) {
-        bomHorario.style.color = 'white'
+        document.getElementById('bomHorario').style.color = 'white'
         document.body.style.background = 'purple'
         meuFavicon = '../static/favicons/favicon-noite.ico'
         bomHorario = 'Boa noite!'
