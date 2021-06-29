@@ -16,10 +16,10 @@ def index():
         return render_template('index.html')
 
     elif request.method == "POST":
-        if request.form.get('cadastrar'):
-            return redirect('/cadastrar/')
-        elif request.form.get('entrar'):
-            return redirect('/entrar/')
+        if request.form.get('escolha').lower() == 'cadastrar':
+            return render_template('cadastrar.html')
+        elif request.form.get('escolha').lower() == 'entrar':
+            return render_template('entrar.html')
         else: 
             return render_template('erro.html', msg_erro='Deu bosta')
 
@@ -30,7 +30,7 @@ def index():
 @meu_app.route('/cadastrar/', methods=['GET', 'POST'])
 def route_cadastrar():
     if not request.form.get('nome'):
-            return render_template('erro.html', msg_erro='Você não tem nome?')
+        return render_template('erro.html', msg_erro='Você não tem nome?')
 
     elif not request.form.get('email'):
         return render_template('erro.html', msg_erro='Você não tem e-mail?')
@@ -47,7 +47,7 @@ def route_cadastrar():
 
     db.execute("INSERT INTO registrados (nome, email, senha) VALUES(?, ?, ?)", nome, email, senha)
 
-    texto = f"Parabéns! Tu foi registrado com sucesso, {nome}!!!"
+    texto = f"Parabens! Tu foi registrado com sucesso, {nome}!!!"
     assunto = "Registrado!"
     msg_email = (f"Subject: {assunto}\n\n{texto}")
     
@@ -64,15 +64,23 @@ def route_cadastrar():
 
 @meu_app.route('/entrar/', methods=['GET', 'POST'])
 def route_entrar():
+    if not request.form.get('email'):
+        return render_template('erro.html', msg_erro='Você não tem e-mail?')
+
+    elif not request.form.get('senha'):
+        return render_template('erro.html', msg_erro='Você não tem senha?')
+
     email = request.form.get('email')
-    senha = request.form.get('senha1')
+    senha = request.form.get('senha')
 
     emails_registrados = []
     senhas_registradas = []
 
-    for linha in db.execute("SELECT email, senha FROM registrados"):
-        emails_registrados.append(linha.email)
-        senhas_registradas.append(linha.senha1)
+    linhas = db.execute("SELECT email, senha FROM registrados")
+
+    for linha in linhas:
+        emails_registrados.append(linha['email'])
+        senhas_registradas.append(linha['senha'])
 
     if email not in emails_registrados:
         msg_erro = 'E-mail incorreto! Tente novamente.'
@@ -86,7 +94,7 @@ def route_entrar():
 
 @meu_app.route('/pessoas/')
 def route_pessoas():
-    msg = 'Parabéns! Você se cadastrou ou entrou com sucesso! Essas são todas as pessoas cadastradas:'  # TODO: Personalizar mais a msg
+    msg = 'Parabéns! Você se cadastrou ou entrou com sucesso!'  # TODO: Personalizar mais a msg
 
     linhas = db.execute("SELECT nome, email FROM registrados")
 

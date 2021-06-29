@@ -1,18 +1,22 @@
 {% extends "layout.html" %}
 
 {% block final_head %}
-    <title>Formulário</title>
+    <title>Index</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
-    <script src="../static/scriptIndex.js"></script>
+    <script src="static/scriptIndex.js"></script>
 {% endblock %}
 
 {% block corpo %}
-    <h1>Bom dia/tarde/noite/madrugada</h1>
+    <h1>Bom dia/tarde/noite/madrugada</h1> <!-- USAR UM JS BEM BOLADO (MUDAR A COR TBM???)-->
     <form action="/" method="post">
         <div class="central">
-            <input name="cadastrar" type="submit" value="Cadastrar">
-            <input name="entrar" type="submit" value="Entrar">
+            <select name="escolha">
+                <option selected disabled>Cadastrar ou Entrar?</option>
+                <option value="cadastrar">Cadastrar</option>
+                <option value="entrar">Entrar</option>
+            </select>
+            <input name="enviar" type="submit" value="Enviar">
         </div>
     </form>
 {% endblock %}

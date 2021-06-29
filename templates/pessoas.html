@@ -7,13 +7,13 @@
 {% endblock %}
 
 {% block corpo %}
-    <h1>{{ msg }}</h1>
+    <p>{{ msg }}</p>
+    <p>Essas são todas as pessoas cadastradas:</p>
     <div class="central">
         <table class="table table-striped table-dark">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
-                    <th scope="col">Humor</th>
                     <th scope="col">E-mail</th>
                 </tr>
             </thead>
@@ -21,7 +21,6 @@
                 {% for pessoa in pessoas %}
                 <tr>
                     <td scope="row">{{ pessoa.nome }}</td>
-                    <td scope="row">{{ pessoa.humor.capitalize() }}</td>
                     <td scope="row">{{ pessoa.email }}</td>
                 </tr>
                 {% endfor %}

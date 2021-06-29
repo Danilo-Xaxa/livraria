@@ -23,6 +23,11 @@ a {
     margin: 20px auto;
 }
 
+a:hover {
+    text-decoration: none;
+    color: purple;
+}
+
 .central {
     display: grid;
     place-items: center;

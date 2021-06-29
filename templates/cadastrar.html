@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block final_head %}
-    <title>Formulário</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
 {% endblock %}
 
 {% block corpo %}
-    <form action="/cadastrar" method="post">
+    <form action="/cadastrar/" method="post">
         <div class="central">
         <input name="nome" autofocus placeholder="Nome" type="text">
         <input name="email" autofocus placeholder="E-mail" type="email">
