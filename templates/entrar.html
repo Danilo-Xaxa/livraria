@@ -4,15 +4,14 @@
     <title>Formulário</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
-    <script src="../static/scriptIndex.js"></script>
 {% endblock %}
 
 {% block corpo %}
-    <h1>Bom dia/tarde/noite/madrugada</h1>
-    <form action="/" method="post">
+    <form action="/entrar/" method="post">
         <div class="central">
-            <input name="cadastrar" type="submit" value="Cadastrar">
-            <input name="entrar" type="submit" value="Entrar">
+        <input name="email" autofocus placeholder="E-mail" type="email">
+        <input name="senha" autofocus placeholder="Senha" type="password">
+        <input type="submit" value="Enviar">
         </div>
     </form>
 {% endblock %}
