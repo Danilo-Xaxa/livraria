@@ -6,11 +6,14 @@ function horarioFavicon() {
     hora = String(hora).length == 1? '0' + hora : hora
     minuto = String(minuto).length == 1? '0' + minuto : minuto
 
+    hora = 19
+    minuto = 00
+
     let meuFavicon
     let msgBomHorario
 
     if (hora > 0 && hora < 5) {
-        corBomHorario = white
+        corBomHorario = 'white'
         document.body.style.background = 'black'
         meuFavicon = '../static/favicons/favicon-madrugada.ico'
         msgBomHorario = 'Boa madrugada!'

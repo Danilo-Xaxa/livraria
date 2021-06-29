@@ -126,7 +126,7 @@ def route_pessoas():
 
     linhas = db.execute("SELECT nome, email FROM registrados")
 
-    return render_template('pessoas.html', pessoas=linhas, msg=msg_sucesso)
+    return render_template('pessoas.html', pessoas=linhas, msg_sucesso=msg_sucesso)
 
 
 @meu_app.route('/erro')
