@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, redirect, request
+from os import getenv
 from cs50 import SQL
 from smtplib import SMTP
-import teste  # TODO: Deletar saporra dps das env var
-import os
 
 
 meu_app = Flask(__name__)
@@ -61,8 +60,8 @@ def route_cadastrar():
         assunto = "Registrado!"
         msg_email = (f"Subject: {assunto}\n\n{texto}")
         
-        EMAIL_REMETENTE = teste.EMAIL_REMETENTE  # TODO: os.getenv('EMAIL_REMETENTE')
-        EMAIL_SENHA = teste.EMAIL_SENHA  # TODO: os.getenv('EMAIL_SENHA')
+        EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
+        EMAIL_SENHA = getenv('EMAIL_SENHA')
 
         servidor = SMTP("smtp.gmail.com", 587)
         servidor.starttls()
