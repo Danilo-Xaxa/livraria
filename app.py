@@ -18,13 +18,10 @@ def index():
         return render_template('index.html')
 
     elif request.method == "POST":
-        if request.form.get('escolha').lower() == 'cadastrar':
+        if request.form['botao'] == 'Cadastrar':
             return redirect('/cadastrar')
-        elif request.form.get('escolha').lower() == 'entrar':
+        elif request.form['botao'] == 'Entrar':
             return redirect('/entrar')
-        else:
-            msg_erro = 'Deu bosta'
-            return redirect('/erro')
 
 
 @meu_app.route('/cadastrar', methods=['GET', 'POST'])
@@ -55,8 +52,8 @@ def route_cadastrar():
             return redirect('/erro')
 
         nome = request.form.get('nome').strip().title()
-        email = request.form.get('email').lower()
-        senha = request.form.get('senha1')
+        email = request.form.get('email').strip().lower()
+        senha = request.form.get('senha1').strip()
 
         db.execute("INSERT INTO registrados (nome, email, senha) VALUES(?, ?, ?)", nome, email, senha)
 

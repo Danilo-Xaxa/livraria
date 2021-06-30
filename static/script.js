@@ -1,4 +1,4 @@
-function horarioFavicon() {
+function horarioCoresFavicon() {
     let agora = new Date()
     let hora = agora.getHours()
     let minuto = agora.getMinutes()
@@ -6,17 +6,17 @@ function horarioFavicon() {
     hora = String(hora).length == 1? '0' + hora : hora
     minuto = String(minuto).length == 1? '0' + minuto : minuto
 
-    hora = 03
-    minuto = 00
-
     let meuFavicon
+
     let msgBomHorario
-    let corA
-    let corTexto
-    let bomHorario = document.getElementById('bomHorario')
-    let tagsA = document.getElementsByTagName('a')
+    let h1BomHorario = document.getElementById('bomHorario')
+
+    let tagsH1 = document.getElementsByTagName('h1')
     let tagsP = document.getElementsByTagName('p')
-    let h1 = Array.from(document.getElementsByTagName('h1'))[0]
+    let tagsA = document.getElementsByTagName('a')
+    let corTexto
+    let corA
+    
 
     if (hora > 0 && hora < 5) {
         corTexto = 'white'
@@ -33,7 +33,7 @@ function horarioFavicon() {
         document.body.style.background = 'orange'
         meuFavicon = '../static/favicons/favicon-tarde.ico'
         msgBomHorario = 'Boa tarde!'
-        corA = 'red'
+        corA = 'purple'
     } else if (hora <= 24) {
         corTexto = 'white'
         document.body.style.background = 'purple'
@@ -42,6 +42,7 @@ function horarioFavicon() {
         corA = 'yellow'
     }
 
+
     let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';
@@ -49,13 +50,14 @@ function horarioFavicon() {
     head = document.getElementsByTagName('head')[0]
     head.appendChild(link);
 
-    if (h1) {
-        h1.style.color = `${corTexto}` || 'black'
+
+    if (h1BomHorario) {
+        h1BomHorario.innerText = `${msgBomHorario}`
     }
 
-    if (tagsA) {
-        for (let tagA of Array.from(tagsA)) {
-            tagA.style.color = corA
+    if (tagsH1) {
+        for (let tagH1 of Array.from(tagsH1)) {
+            tagH1.style.color = corTexto || 'black'
         }
     }
 
@@ -65,9 +67,11 @@ function horarioFavicon() {
         }
     }
 
-    if (bomHorario) {
-        bomHorario.innerText = `${msgBomHorario}`
+    if (tagsA) {
+        for (let tagA of Array.from(tagsA)) {
+            tagA.style.color = corA
+        }
     }
 }
 
-horarioFavicon()
+horarioCoresFavicon()
