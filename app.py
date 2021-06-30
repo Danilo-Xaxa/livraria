@@ -24,7 +24,7 @@ def index():
 
 
 @meu_app.route('/cadastrar', methods=['GET', 'POST'])
-def route_cadastrar():
+def cadastrar():
     global msg_erro
     global fez
     global voltar_erro
@@ -56,8 +56,8 @@ def route_cadastrar():
 
         db.execute("INSERT INTO registrados (nome, email, senha) VALUES(?, ?, ?)", nome, email, senha)
 
-        texto = f"Parabens! Tu foi registrado com sucesso, {nome}!!!"
-        assunto = "Registrado!"
+        texto = f"Parabéns! Você foi registrado com sucesso, {nome}!"
+        assunto = "Registrado"
         msg_email = (f"Subject: {assunto}\n\n{texto}")
         
         EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
@@ -66,7 +66,7 @@ def route_cadastrar():
         servidor = SMTP("smtp.gmail.com", 587)
         servidor.starttls()
         servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
-        servidor.sendmail(EMAIL_REMETENTE, email, msg_email)
+        servidor.sendmail(EMAIL_REMETENTE, email, msg_email.encode("utf8"))
 
         fez = 'se cadastrou'
 
@@ -74,7 +74,7 @@ def route_cadastrar():
 
 
 @meu_app.route('/entrar', methods=['GET', 'POST'])
-def route_entrar():
+def entrar():
     global msg_erro
     global fez
     global voltar_erro
@@ -117,7 +117,7 @@ def route_entrar():
 
 
 @meu_app.route('/pessoas')
-def route_pessoas():
+def pessoas():
     msg_sucesso = f'Parabéns! Você {fez} com sucesso!'
 
     linhas = db.execute("SELECT nome, email FROM registrados")
@@ -126,5 +126,5 @@ def route_pessoas():
 
 
 @meu_app.route('/erro')
-def route_erro():
+def erro():
     return render_template('erro.html', msg_erro=msg_erro, voltar_erro=voltar_erro)
