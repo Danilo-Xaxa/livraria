@@ -1,2 +1,11 @@
 # flask101
- Repo dos meus estudos de Flask
+ Meus estudos iniciantes de Flask
+ 
+Linguagens e frameworks usados:
+* HTML
+* CSS
+* JavaScript
+* Bootstrap
+* Python
+* Flask
+* SQL
