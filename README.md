@@ -1,5 +1,5 @@
 # flask101
- Meus estudos iniciantes de Flask
+**Meus estudos iniciantes de Flask**
  
 Linguagens e frameworks usados:
 * HTML
