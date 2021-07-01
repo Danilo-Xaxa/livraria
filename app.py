@@ -82,7 +82,7 @@ def cadastrar():
 
         fez = 'se cadastrou'
 
-        session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']
+        session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']  # eu deveria usar a sintaxe de placeholder (?)
 
         nome_pessoa = session.get("nome")
 
@@ -130,7 +130,7 @@ def entrar():
 
         fez = 'entrou'
 
-        session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']
+        session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']  # eu deveria usar a sintaxe de placeholder (?)
 
         nome_pessoa = session.get("nome")
 
