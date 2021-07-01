@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block final_head %}
+    <title>Produtos</title>
+    <link rel="stylesheet" href="../static/style.css">
+{% endblock %}
+
+{% block corpo %}
+    <h1>Produtos em estoque</h1>
+    <form action="/produtos" method="post">
+        <div class="central">   
+            <!--
+            A PARTE DO AJAX:
+            <input name="livro_digitado" autofocus placeholder="Livro" type="text">
+            <input type="submit" value="Enviar">
+            -->
+            <div id="produtos_restantes">
+                <select name="" id="">
+                    {% for produto in produtos %}
+                        <!-- CRIAR VÁRIOS BOTÕES COM O NOME DO PRODUTO -->
+                    {% endfor %}
+                    <input type="submit" name="adicionar" value="Adicionar ao carrinho">
+                </select>
+            </div>
+        </div>
+    </form>
+    <a href="/carrinho">Meu carrinho</a>
+    <a href="/pessoas">Pessoas cadastradas</a>
+    <a href="/desconectar">Desconectar</a>
+{% endblock %}

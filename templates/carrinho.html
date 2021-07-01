@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block final_head %}
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="../static/style.css">
+{% endblock %}
+
+{% block corpo %}
+    <h1>Carrinho de compras</h1>
+    <div class="central">
+        <table class="table table-striped table-dark">
+            <tbody>
+                {% for livro in livros_carrinho %}
+                <tr>
+                    <td scope="row">{{ livro.id }}</td>
+                    <td scope="row">{{ livro.nome }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <a href="/produtos">Mais produtos</a>
+    <a href="/pessoas">Pessoas cadastradas</a>
+    <a href="/desconectar">Desconectar</a>
+    </div>
+{% endblock %}
