@@ -1,10 +1,14 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, session
+from flask_session import Session
 from os import getenv
 from cs50 import SQL
 from smtplib import SMTP
 
 
 meu_app = Flask(__name__)
+meu_app.config["SESSION_PERMANENT"] = False
+meu_app.config["SESSION_TYPE"] = "filesystem"
+Session(meu_app)
 
 db = SQL("sqlite:///pessoas.db")
 
@@ -12,9 +16,16 @@ db = SQL("sqlite:///pessoas.db")
 @meu_app.route('/', methods=['GET', 'POST'])
 def index():
     global msg_erro
+    global nome_pessoa
+    global fez
 
     if request.method == "GET":
-        return render_template('index.html')
+        if session.get("nome"):
+            fez = 'entrou'
+            nome_pessoa = session.get("nome")
+            return redirect('/pessoas')
+        else:
+            return render_template('index.html')
 
     elif request.method == "POST":
         if request.form['botao'] == 'Cadastrar':
@@ -28,6 +39,7 @@ def cadastrar():
     global msg_erro
     global fez
     global voltar_erro
+    global nome_pessoa
     voltar_erro = '/cadastrar'
 
     if request.method == "GET":
@@ -70,6 +82,10 @@ def cadastrar():
 
         fez = 'se cadastrou'
 
+        session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']
+
+        nome_pessoa = session.get("nome")
+
         return redirect('/pessoas')
 
 
@@ -78,6 +94,7 @@ def entrar():
     global msg_erro
     global fez
     global voltar_erro
+    global nome_pessoa
     voltar_erro = '/entrar'
 
     if request.method == "GET":
@@ -113,16 +130,26 @@ def entrar():
 
         fez = 'entrou'
 
+        session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']
+
+        nome_pessoa = session.get("nome")
+
         return redirect('/pessoas')
 
 
 @meu_app.route('/pessoas')
 def pessoas():
-    msg_sucesso = f'Parabéns! Você {fez} com sucesso!'
+    msg_sucesso = f'Parabéns, {nome_pessoa}! Você {fez} com sucesso!'
 
     linhas = db.execute("SELECT nome, email FROM registrados")
 
     return render_template('pessoas.html', pessoas=linhas, msg_sucesso=msg_sucesso)
+
+
+@meu_app.route("/desconectar")
+def desconectar():
+    session["nome"] = None
+    return redirect("/")
 
 
 @meu_app.route('/erro')

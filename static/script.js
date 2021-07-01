@@ -19,10 +19,10 @@ function horarioCoresFavicon() {
     
 
     if (hora > 0 && hora < 5) {
-        corTexto = 'white'
         document.body.style.background = 'black'
         meuFavicon = '../static/favicons/favicon-madrugada.ico'
         msgBomHorario = 'Boa madrugada!'
+        corTexto = 'white'
         corA = 'pink'
     } else if (hora < 12) {
         document.body.style.background = 'rgb(112, 168, 187)'
@@ -39,6 +39,7 @@ function horarioCoresFavicon() {
         document.body.style.background = 'purple'
         meuFavicon = '../static/favicons/favicon-noite.ico'
         msgBomHorario = 'Boa noite!'
+        corTexto = 'white'
         corA = 'yellow'
     }
 
