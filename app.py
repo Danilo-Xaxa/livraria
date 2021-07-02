@@ -13,13 +13,16 @@ Session(meu_app)
 db = SQL("sqlite:///pessoas.db")
 
 todos_livros = [
-    'A Pedra Filosofal',
-    'A Câmara Secreta',
-    'O Prisioneiro de Azkaban',
-    'O Cálice de Fogo',
-    'A Ordem da Fênix',
-    'O Enigma do Príncipe',
-    'As Relíquias da Morte',
+    'O Mundo de Sofia',
+    'O Código Da Vinci',
+    'O Pequeno Príncipe',
+    'Os Miseráveis',
+    'Sapiens',
+    'A Metamorfose',
+    'O Alquimista',
+    'A Arte da Guerra',
+    'O Chamado de Cthulhu',
+    'Romeu e Julieta',
 ]
 
 carrinho_vazio = True  # sempre que dar flask run, o carrinho vai ficar vazio. isso mudará com o uso de session

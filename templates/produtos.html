@@ -21,7 +21,7 @@
                 {% if livros %}
                     {% for livro in livros %}
                         <input type="checkbox" class="btn-check" id="btn-check{{ loop.index }}" autocomplete="off" value="{{ livro }}" name="escolhido" style="display: none;">
-                        <label class="btn btn-primary" for="btn-check{{ loop.index }}">{{ livro }}</label>
+                        <label class="btn btn-primary" for="btn-check{{ loop.index }}" style="display: block;">{{ livro }}</label>
                     {% endfor %}
                 {% else %}
                     <h2>Não sobrou nenhum livro :)</h2>

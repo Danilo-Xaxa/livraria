@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -46,4 +48,9 @@ input, select {
 input[type=checkbox]:checked + label {
     font-weight: 600;
     color: black;
+}
+
+.btn-primary {
+    background-color: seagreen;
+    border-color: seagreen;
 }

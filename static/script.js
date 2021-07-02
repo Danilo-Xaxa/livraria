@@ -79,17 +79,6 @@ horarioBackgroundFavicon()
 
 
 /*
-function corBotoes() {
-    if (getElementsByTagName('label')) {
-        const botoes = getElementsByTagName('label')
-        ...
-    }
-}
-corBotoes()
-*/
-
-
-/*
 function ajax() {
     // tem que importar jquery, né?
 }
