@@ -1,4 +1,4 @@
-function horarioCoresFavicon() {
+function horarioBackgroundFavicon() {
     let agora = new Date()
     let hora = agora.getHours()
     let minuto = agora.getMinutes()
@@ -75,4 +75,24 @@ function horarioCoresFavicon() {
     }
 }
 
-horarioCoresFavicon()
+horarioBackgroundFavicon()
+
+
+/*
+function corBotoes() {
+    if (getElementsByTagName('label')) {
+        const botoes = getElementsByTagName('label')
+        ...
+    }
+}
+corBotoes()
+*/
+
+
+/*
+function ajax() {
+    // tem que importar jquery, né?
+}
+
+ajax()
+*/

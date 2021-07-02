@@ -12,6 +12,18 @@ Session(meu_app)
 
 db = SQL("sqlite:///pessoas.db")
 
+todos_livros = [
+    'A Pedra Filosofal',
+    'A Câmara Secreta',
+    'O Prisioneiro de Azkaban',
+    'O Cálice de Fogo',
+    'A Ordem da Fênix',
+    'O Enigma do Príncipe',
+    'As Relíquias da Morte',
+]
+
+carrinho_vazio = True  # sempre que dar flask run, o carrinho vai ficar vazio. isso mudará com o uso de session
+
 
 @meu_app.route('/', methods=['GET', 'POST'])
 def index():
@@ -146,9 +158,42 @@ def pessoas():
     return render_template('pessoas.html', pessoas=linhas, msg_sucesso=msg_sucesso)
 
 
+@meu_app.route('/produtos', methods=['GET', 'POST'])
+def produtos():
+    global livros_carrinho
+    global livros_adicionados
+    global carrinho_vazio
+
+    if carrinho_vazio:
+        livros_carrinho = []
+
+    livros_restantes = [livro for livro in todos_livros if livro not in livros_carrinho]
+
+    if request.method == "GET":
+        return render_template('produtos.html', livros=livros_restantes)
+
+    elif request.method == "POST":
+        if request.form.getlist('escolhido'):
+            livros_adicionados = request.form.getlist('escolhido')
+
+            for livro in livros_adicionados:
+                livros_carrinho.append(livro)
+            carrinho_vazio = False
+
+    return redirect('/carrinho')
+
+
+@meu_app.route('/carrinho')
+def carrinho():
+    return render_template('carrinho.html', livros_carrinho=livros_carrinho)
+
+
 @meu_app.route("/desconectar")
 def desconectar():
+    global carrinho_vazio
+    
     session["nome"] = None
+    carrinho_vazio = True
     return redirect("/")
 
 

@@ -42,3 +42,8 @@ input, select {
     border: 0;
     text-align: center;
 }
+
+input[type=checkbox]:checked + label {
+    font-weight: 600;
+    color: black;
+}
