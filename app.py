@@ -25,21 +25,22 @@ todos_livros = [
     'Romeu e Julieta',
 ]
 
-carrinho_vazio = True  # sempre que dar flask run, o carrinho vai ficar vazio. isso mudará com o uso de session
-
 
 @meu_app.route('/', methods=['GET', 'POST'])
 def index():
     global msg_erro
     global nome_pessoa
     global fez
+    global carrinho_vazio
 
     if request.method == "GET":
         if session.get("nome"):
             fez = 'entrou'
             nome_pessoa = session.get("nome")
+            carrinho_vazio = False
             return redirect('/pessoas')
         else:
+            carrinho_vazio = True
             return render_template('index.html')
 
     elif request.method == "POST":
@@ -99,6 +100,8 @@ def cadastrar():
 
         session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']  # eu deveria usar a sintaxe de placeholder (?)
 
+        session["livros"] = []
+
         nome_pessoa = session.get("nome")
 
         return redirect('/pessoas')
@@ -147,6 +150,8 @@ def entrar():
 
         session["nome"] = db.execute(f"SELECT nome FROM registrados WHERE email='{email}'")[0]['nome']  # eu deveria usar a sintaxe de placeholder (?)
 
+        session["livros"] = []
+
         nome_pessoa = session.get("nome")
 
         return redirect('/pessoas')
@@ -169,6 +174,8 @@ def produtos():
 
     if carrinho_vazio:
         livros_carrinho = []
+    else:
+        livros_carrinho = session.get("livros")
 
     livros_restantes = [livro for livro in todos_livros if livro not in livros_carrinho]
 
@@ -181,7 +188,9 @@ def produtos():
 
             for livro in livros_adicionados:
                 livros_carrinho.append(livro)
+
             carrinho_vazio = False
+            session["livros"] = livros_carrinho
 
     return redirect('/carrinho')
 
@@ -193,10 +202,8 @@ def carrinho():
 
 @meu_app.route("/desconectar")
 def desconectar():
-    global carrinho_vazio
-    
     session["nome"] = None
-    carrinho_vazio = True
+    session["livros"] = None 
     return redirect("/")
 
 
