@@ -3,6 +3,9 @@ function horarioBackgroundFavicon() {
     let hora = agora.getHours()
     let minuto = agora.getMinutes()
 
+    hora = hora // pra manipular a hora manualmente (e o minuto abaixo)
+    minuto = minuto
+
     hora = String(hora).length == 1? '0' + hora : hora
     minuto = String(minuto).length == 1? '0' + minuto : minuto
 
@@ -12,6 +15,7 @@ function horarioBackgroundFavicon() {
     let h1BomHorario = document.getElementById('bomHorario')
 
     let tagsH1 = document.getElementsByTagName('h1')
+    let tagsH2 = document.getElementsByTagName('h2')
     let tagsP = document.getElementsByTagName('p')
     let tagsA = document.getElementsByTagName('a')
     let corTexto
@@ -19,28 +23,29 @@ function horarioBackgroundFavicon() {
     
 
     if (hora >= 0 && hora < 5) {
-        document.body.style.background = 'black'
         meuFavicon = '../static/favicons/favicon-madrugada.ico'
         msgBomHorario = 'Boa madrugada!'
-        corTexto = 'white'
-        corA = 'pink'
+        document.body.style.background = '#000'
+        corTexto = '#EFF9F0'
+        corA = '#DDC8C4'
     } else if (hora < 12) {
-        document.body.style.background = 'rgb(112, 168, 187)'
         meuFavicon = '../static/favicons/favicon-manha.ico'
         msgBomHorario = 'Bom dia!'
-        corA = 'brown'
+        document.body.style.background = '#70A8BB'
+        corTexto = '#37323E'
+        corA = '#C03221'
     } else if (hora < 18) {
-        document.body.style.background = 'orange'
         meuFavicon = '../static/favicons/favicon-tarde.ico'
         msgBomHorario = 'Boa tarde!'
-        corA = 'purple'
+        document.body.style.background = '#FFA500'
+        corTexto = '#121619'
+        corA = '#DD1C1A'
     } else if (hora <= 23) {
-        corTexto = 'white'
-        document.body.style.background = 'purple'
         meuFavicon = '../static/favicons/favicon-noite.ico'
         msgBomHorario = 'Boa noite!'
-        corTexto = 'white'
-        corA = 'yellow'
+        document.body.style.background = '#800080'
+        corTexto = '#FABC2A'
+        corA = '#F2EDEB'
     }
 
 
@@ -59,6 +64,12 @@ function horarioBackgroundFavicon() {
     if (tagsH1) {
         for (let tagH1 of Array.from(tagsH1)) {
             tagH1.style.color = corTexto || 'black'
+        }
+    }
+
+    if (tagsH2) {
+        for (let tagH2 of Array.from(tagsH2)) {
+            tagH2.style.color = corTexto
         }
     }
 

@@ -51,6 +51,25 @@ input[type=checkbox]:checked + label {
 }
 
 .btn-primary {
-    background-color: seagreen;
-    border-color: seagreen;
+    background-color: seagreen; /* Cor do botão */
+    border-color: seagreen; /* Cor da borda do botão */
+}
+
+.btn-primary:hover {
+    background-color: orangered; /* Cor do botão:hover */
+    border-color: orangered; /* Cor da borda do botão:hover */
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: orangered; /* Cor do botão:active */
+    border-color: orangered; /* Cor da borda do botão:active */
+}
+
+.table-dark {
+    color: #fff; /* Cor do texto da tabela */
+    background-color: #212529; /* Cor da tabela */
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    border-color: black; /* Cor da borda da tabela */
 }
