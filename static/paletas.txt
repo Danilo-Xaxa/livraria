@@ -2,8 +2,8 @@ ESQUEMA:
 1 - fundo da página
 2 - qualquer texto
 3 - links <a>
-4 - cor do botao + background-color e border-color ('.table-dark')
-5 - cor do botao:hover + color ('.table-dark')
+4 - cor do botao (ou botao:hover) + background-color ('.table-dark')
+5 - cor do botao:hover (ou botao)
 
 
 
@@ -11,8 +11,8 @@ MADRUGADA:
 #000 (black)
 #EFF9F0 (mint cream)
 #DDC8C4 (champagne pink)
-#14591D (lincoln green) ?
-#8C1C13 (dark red) ?
+#09814A (segreen)
+#8C1C13 (dark red)
 
 
 
@@ -20,8 +20,8 @@ DIA:
 #70A8BB (maximum blue)
 #37323E (black coffee)
 #C03221 (international orange golden gate bridge)
-#A5CC6B (pistachio) ?
-#EF3E36 (cinnabar) ?
+#679436 (maximum green)
+#EF3E36 (cinnabar)
 
 
 
@@ -29,8 +29,8 @@ TARDE:
 #FFA500 (orange web)
 #121619 (rich black)
 #DD1C1A (maximum red)
-#14591D (lincoln green) ?
-#B9314F (bright maroon) ?
+#14591D (lincoln green)
+#B9314F (bright maroon)
 
 
 
@@ -38,5 +38,5 @@ NOITE:
 #800080 (patriarch)
 #FABC2A (orange yellow)
 #F2EDEB (isabelline)
-#F05365 (radical red) ?
-#BD93BD (lilac) ?
+#31572C (hunter green)
+#BD93BD (lilac)

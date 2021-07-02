@@ -65,11 +65,13 @@ input[type=checkbox]:checked + label {
     border-color: orangered; /* Cor da borda do botão:active */
 }
 
+/*
 .table-dark {
-    color: #fff; /* Cor do texto da tabela */
-    background-color: #212529; /* Cor da tabela */
+    background-color: ; SE EU QUISER MUDAR A COR DA TABELA
 }
+*/
 
-.table-dark td, .table-dark th, .table-dark thead th {
-    border-color: black; /* Cor da borda da tabela */
+
+.table-dark thead th {
+    border-color: black; /* SE EU QUISER MUDAR A COR DA BORDA DA TABELA */
 }

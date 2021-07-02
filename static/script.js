@@ -1,4 +1,4 @@
-function horarioBackgroundFavicon() {
+function horarioFaviconCores() {
     let agora = new Date()
     let hora = agora.getHours()
     let minuto = agora.getMinutes()
@@ -17,8 +17,13 @@ function horarioBackgroundFavicon() {
     let tagsH1 = document.getElementsByTagName('h1')
     let tagsH2 = document.getElementsByTagName('h2')
     let tagsP = document.getElementsByTagName('p')
+    let tagsTr = document.getElementsByTagName('tr')
+    let tagsTh = document.getElementsByTagName('th')
+
     let tagsA = document.getElementsByTagName('a')
     let corTexto
+    let corTr
+    let corTh
     let corA
     
 
@@ -27,24 +32,28 @@ function horarioBackgroundFavicon() {
         msgBomHorario = 'Boa madrugada!'
         document.body.style.background = '#000'
         corTexto = '#EFF9F0'
+        corTr = '#09814A'  // mudar?
         corA = '#DDC8C4'
     } else if (hora < 12) {
         meuFavicon = '../static/favicons/favicon-manha.ico'
         msgBomHorario = 'Bom dia!'
         document.body.style.background = '#70A8BB'
         corTexto = '#37323E'
+        corTr = '#679436'
         corA = '#C03221'
     } else if (hora < 18) {
         meuFavicon = '../static/favicons/favicon-tarde.ico'
         msgBomHorario = 'Boa tarde!'
         document.body.style.background = '#FFA500'
         corTexto = '#121619'
+        corTr = '#14591D'
         corA = '#DD1C1A'
     } else if (hora <= 23) {
         meuFavicon = '../static/favicons/favicon-noite.ico'
         msgBomHorario = 'Boa noite!'
         document.body.style.background = '#800080'
         corTexto = '#FABC2A'
+        corTr = '#31572C'
         corA = '#F2EDEB'
     }
 
@@ -63,7 +72,7 @@ function horarioBackgroundFavicon() {
 
     if (tagsH1) {
         for (let tagH1 of Array.from(tagsH1)) {
-            tagH1.style.color = corTexto || 'black'
+            tagH1.style.color = corTexto
         }
     }
 
@@ -79,6 +88,12 @@ function horarioBackgroundFavicon() {
         }
     }
 
+    if (tagsTr) {
+        for (let tagTr of Array.from(tagsTr)) {
+            tagTr.style.backgroundColor = corTr
+        }
+    }
+
     if (tagsA) {
         for (let tagA of Array.from(tagsA)) {
             tagA.style.color = corA
@@ -86,7 +101,7 @@ function horarioBackgroundFavicon() {
     }
 }
 
-horarioBackgroundFavicon()
+horarioFaviconCores()
 
 
 /*
