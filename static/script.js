@@ -37,6 +37,7 @@ function horarioFaviconCores() {
         corTr = '#09814A'
         corA = '#DDC8C4'
         corBotao = '#8C1C13'
+        document.documentElement.style.setProperty('--corTdButton', corTr);
     } else if (hora < 12) {
         meuFavicon = '../static/favicons/favicon-manha.ico'
         msgBomHorario = 'Bom dia!'
@@ -45,6 +46,7 @@ function horarioFaviconCores() {
         corTr = '#679436'
         corA = '#C03221'
         corBotao = '#EF3E36'
+        document.documentElement.style.setProperty('--corTdButton', corA);
     } else if (hora < 18) {
         meuFavicon = '../static/favicons/favicon-tarde.ico'
         msgBomHorario = 'Boa tarde!'
@@ -53,6 +55,7 @@ function horarioFaviconCores() {
         corTr = '#14591D'
         corA = '#DD1C1A'
         corBotao = '#B9314F'
+        document.documentElement.style.setProperty('--corTdButton', corA);
     } else if (hora <= 23) {
         meuFavicon = '../static/favicons/favicon-noite.ico'
         msgBomHorario = 'Boa noite!'
@@ -61,10 +64,11 @@ function horarioFaviconCores() {
         corTr = '#31572C'
         corA = '#FABC2A'
         corBotao = '#BD93BD'
+        document.documentElement.style.setProperty('--corTdButton', corTr);
     }
 
     document.documentElement.style.setProperty('--botaoSelecionado', corTr);
-
+    document.documentElement.style.setProperty('--tabela', corTr);
 
     let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -117,6 +121,11 @@ function horarioFaviconCores() {
 }
 
 horarioFaviconCores()
+
+
+function removerLivro(livro) {
+    window.location.href=`/carrinho?removido=${encodeURI(livro)}`
+}
 
 
 /*

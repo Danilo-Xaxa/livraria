@@ -197,6 +197,11 @@ def produtos():
 
 @meu_app.route('/carrinho')
 def carrinho():
+    livro_removido = request.args.get('removido')
+    if livro_removido:
+        livros_carrinho.remove(livro_removido)
+        session["livros"] = livros_carrinho
+        
     return render_template('carrinho.html', livros_carrinho=livros_carrinho)
 
 
