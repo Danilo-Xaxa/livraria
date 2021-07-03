@@ -2,8 +2,8 @@ ESQUEMA:
 1 - fundo da página
 2 - qualquer texto
 3 - links <a>
-4 - cor do botao (ou botao:hover) + background-color ('.table-dark')
-5 - cor do botao:hover (ou botao)
+4 - cor do botao:hover + background-color ('.table-dark')
+5 - cor do ou botao
 
 
 
@@ -11,7 +11,7 @@ MADRUGADA:
 #000 (black)
 #EFF9F0 (mint cream)
 #DDC8C4 (champagne pink)
-#09814A (segreen)
+#09814A (seagreen)
 #8C1C13 (dark red)
 
 
