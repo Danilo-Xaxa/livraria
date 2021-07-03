@@ -45,6 +45,14 @@ input, select {
     text-align: center;
 }
 
+.btn-check {
+    display: none;
+}
+
+.btn {
+    display: block;
+}
+
 /* feiura daqui pra baixo */
 
 input[type=checkbox]:checked + label {

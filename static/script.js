@@ -57,9 +57,9 @@ function horarioFaviconCores() {
         meuFavicon = '../static/favicons/favicon-noite.ico'
         msgBomHorario = 'Boa noite!'
         document.body.style.background = '#800080'
-        corTexto = '#FABC2A'
+        corTexto = '#F2EDEB'
         corTr = '#31572C'
-        corA = '#F2EDEB'
+        corA = '#FABC2A'
         corBotao = '#BD93BD'
     }
 
@@ -73,10 +73,6 @@ function horarioFaviconCores() {
     head = document.getElementsByTagName('head')[0]
     head.appendChild(link);
 
-
-    if (h1BomHorario) {
-        h1BomHorario.innerText = msgBomHorario
-    }
 
     if (tagsH1) {
         for (let tagH1 of Array.from(tagsH1)) {
@@ -113,6 +109,10 @@ function horarioFaviconCores() {
             botao.style.backgroundColor = corBotao
             botao.style.borderColor = corBotao
         }
+    }
+
+    if (h1BomHorario) {
+        h1BomHorario.innerText = msgBomHorario
     }
 }
 
