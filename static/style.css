@@ -64,18 +64,17 @@ td > button {
     border-color: black;
 }
 
-/* feiura daqui pra baixo */
-
-input[type=checkbox]:checked + label {
-    background-color: var(--botaoSelecionado) !important;
-    border-color: var(--botaoSelecionado) !important; 
-    font-weight: 600;
-    color: black;
-}
-
 .btn-primary {
     background-color: white; /* Cor do botão */
     border-color: white; /* Cor da borda do botão */
+}
+
+.table-dark {
+    background-color: white; /* Cor da tabela */
+}
+
+.table-dark thead th {
+    border-color: white; /* Cor da borda da tabela */
 }
 
 .btn-primary:hover {
@@ -83,17 +82,14 @@ input[type=checkbox]:checked + label {
     border-color: var(--botaoSelecionado) !important; /* Cor da borda do botão:hover */
 }
 
+input[type=checkbox]:checked + label {
+    color: black;
+    font-weight: 600;
+    background-color: var(--botaoSelecionado) !important; /*Cor do botão marcado*/
+    border-color: var(--botaoSelecionado) !important; /* Cor da borda do botão marcado */
+}
+
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    background-color: var(--botaoSelecionado) !important; /* Cor do botão:active */
-    border-color: var(--botaoSelecionado) !important; /* Cor da borda do botão:active */
-}
-
-/*
-.table-dark {
-    background-color: ; SE EU QUISER MUDAR A COR DA TABELA
-}
-*/
-
-.table-dark thead th {
-    border-color: black; /* SE EU QUISER MUDAR A COR DA BORDA DA TABELA */
+    background-color: white; /* Cor do botão:active */
+    border-color: white; /* Cor da borda do botão:active */
 }

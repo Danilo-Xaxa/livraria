@@ -1,4 +1,5 @@
-function horarioFaviconCores() {
+(function horarioFaviconCores() {
+    // ARRUMAR ESSA GAMBIARRA MONSTRUOSA QUE É ESSA IIFE
     let agora = new Date()
     let hora = agora.getHours()
     let minuto = agora.getMinutes()
@@ -67,8 +68,10 @@ function horarioFaviconCores() {
         document.documentElement.style.setProperty('--corTdButton', corTr);
     }
 
+
     document.documentElement.style.setProperty('--botaoSelecionado', corTr);
     document.documentElement.style.setProperty('--tabela', corTr);
+
 
     let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
@@ -118,9 +121,8 @@ function horarioFaviconCores() {
     if (h1BomHorario) {
         h1BomHorario.innerText = msgBomHorario
     }
-}
+})()
 
-horarioFaviconCores()
 
 
 function removerLivro(livro) {
@@ -128,10 +130,7 @@ function removerLivro(livro) {
 }
 
 
-/*
+
 function ajax() {
     // tem que importar jquery, né?
 }
-
-ajax()
-*/
