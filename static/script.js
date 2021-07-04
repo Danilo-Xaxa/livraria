@@ -131,6 +131,53 @@ function removerLivro(livro) {
 
 
 
-function ajax() {
-    // tem que importar jquery, né?
+// PARTE DO """AJAX""":
+function removeAcento(text) {       
+    text = text.toLowerCase()                                             
+    text = text.replace(new RegExp('[ÁÀÂÃ]','gi'), 'a')
+    text = text.replace(new RegExp('[ÉÈÊ]','gi'), 'e')
+    text = text.replace(new RegExp('[ÍÌÎ]','gi'), 'i')
+    text = text.replace(new RegExp('[ÓÒÔÕ]','gi'), 'o')
+    text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u')
+    text = text.replace(new RegExp('[Ç]','gi'), 'c')
+    return text;                 
+}
+
+let livrosRestantes = []
+for (let livro of document.getElementsByClassName('btn-check')) {
+    livrosRestantes.push(livro.id)
+}
+
+let inputLivro = document.getElementById('inputLivro')
+if (inputLivro) {
+    inputLivro.addEventListener('keyup', function() {
+        let digitado = removeAcento(inputLivro.value.toLowerCase())
+
+        let correspondentes = []
+
+        for (let livro of livrosRestantes) {
+            if (removeAcento(livro.toLowerCase()).startsWith(digitado) && digitado != '') {
+                correspondentes.push(livro)
+            }
+        }
+
+        if (correspondentes) {
+            for (let correspondente of correspondentes) {
+                let checkbox = document.getElementById(correspondente)
+                if (checkbox.checked == false) {
+                    checkbox.checked = true
+                    checkbox.className = 'artificalmenteClicado'
+                }
+            }
+        }
+
+        for (let checkbox of document.getElementsByTagName('input')) {
+            let naoCorrespondeMais = checkbox.className == 'artificalmenteClicado' && !(correspondentes.includes(checkbox.id))
+
+            if (naoCorrespondeMais) {
+                checkbox.checked = false
+                checkbox.className = 'artificalmenteDesclicado'
+            }
+        }
+    })
 }

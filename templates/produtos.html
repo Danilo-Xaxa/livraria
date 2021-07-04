@@ -9,25 +9,24 @@
     <h1>Livros em estoque</h1>
     <form action="/produtos" method="post">
         <div class="central">
+
             <div id="caixa_ajax">
-                <!--
-                A PARTE DO AJAX:
-                <input name="livro_digitado" autofocus placeholder="Livro" type="text">
-                <input type="submit" value="Enviar">
-                -->
+                <input name="inputLivro" id="inputLivro" autofocus placeholder="Livro" type="text">
             </div>
 
             <div id="botoes_livros">
                 {% if livros %}
                     {% for livro in livros %}
-                    <input type="checkbox" class="btn-check" id="btn-check{{ loop.index }}" autocomplete="off" value="{{ livro }}" name="escolhido">
-                    <label class="btn btn-primary" for="btn-check{{ loop.index }}">{{ livro }}</label>
+                    <input type="checkbox" class="btn-check" id="{{ livro }}" autocomplete="off" value="{{ livro }}" name="escolhido" style="display: none;">
+                    <label class="btn btn-primary" for="{{ livro }}">{{ livro }}</label>
                     {% endfor %}
                 {% else %}
                     <h2>Não sobrou nenhum livro :)</h2>
                 {% endif %}
             </div>
+
             <input type="submit" name="adicionar" value="Ir ao carrinho">
+
         </div>
     </form>
     <a href="/carrinho">Meu carrinho</a>
