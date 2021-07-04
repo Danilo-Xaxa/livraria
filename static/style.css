@@ -60,10 +60,6 @@ td > button {
     border-color: black;
 }
 
-#inputLivro {
-    width: 100%;
-}
-
 .btn-primary {
     background-color: white; /* Cor do botão */
     border-color: white; /* Cor da borda do botão */
