@@ -171,6 +171,9 @@ def produtos():
     global livros_carrinho
     global livros_adicionados
     global carrinho_vazio
+    global msg_erro
+    global voltar_erro
+    voltar_erro = '/produtos'
 
     if carrinho_vazio:
         livros_carrinho = []
@@ -187,7 +190,11 @@ def produtos():
             livros_adicionados = request.form.getlist('escolhido')
 
             for livro in livros_adicionados:
-                livros_carrinho.append(livro)
+                if livro in livros_restantes:
+                    livros_carrinho.append(livro)
+                else:
+                    msg_erro = 'Algum livro selecionado não está disponível...'
+                    return redirect('/erro')
 
             carrinho_vazio = False
             session["livros"] = livros_carrinho
