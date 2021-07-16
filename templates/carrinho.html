@@ -15,7 +15,7 @@
                     <tr id="{{ livro }}">
                         <td scope="row">{{ loop.index }}</td>
                         <td scope="row">{{ livro }}</td>
-                        <td scope="row"><button type="button" id="remover {{ livro }}" onclick="removerLivro('{{ livro }}')">Remover</button></td>
+                        <td scope="row"><button type="button" id="remover {{ livro }}" onclick="removeLivro('{{ livro }}')">Remover</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
