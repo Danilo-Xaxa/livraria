@@ -1,14 +1,14 @@
 from flask import Flask, render_template, redirect, request, session
 from flask_session import Session
-from os import getenv
 from cs50 import SQL
 from smtplib import SMTP
+from os import getenv
 
 
-meu_app = Flask(__name__)
-meu_app.config["SESSION_PERMANENT"] = False
-meu_app.config["SESSION_TYPE"] = "filesystem"
-Session(meu_app)
+app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 db = SQL("sqlite:///pessoas.db")
 
@@ -26,7 +26,7 @@ todos_livros = [
 ]
 
 
-@meu_app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     global msg_erro
     global nome_pessoa
@@ -50,7 +50,7 @@ def index():
             return redirect('/entrar')
 
 
-@meu_app.route('/cadastrar', methods=['GET', 'POST'])
+@app.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar():
     global msg_erro
     global fez
@@ -107,7 +107,7 @@ def cadastrar():
         return redirect('/pessoas')
 
 
-@meu_app.route('/entrar', methods=['GET', 'POST'])
+@app.route('/entrar', methods=['GET', 'POST'])
 def entrar():
     global msg_erro
     global fez
@@ -157,7 +157,7 @@ def entrar():
         return redirect('/pessoas')
 
 
-@meu_app.route('/pessoas')
+@app.route('/pessoas')
 def pessoas():
     msg_sucesso = f'Parabéns, {nome_pessoa}! Você {fez} com sucesso!'
 
@@ -166,7 +166,7 @@ def pessoas():
     return render_template('pessoas.html', pessoas=linhas, msg_sucesso=msg_sucesso)
 
 
-@meu_app.route('/produtos', methods=['GET', 'POST'])
+@app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
     global livros_carrinho
     global livros_adicionados
@@ -202,7 +202,7 @@ def produtos():
     return redirect('/carrinho')
 
 
-@meu_app.route('/carrinho')
+@app.route('/carrinho')
 def carrinho():
     livro_removido = request.args.get('removido')
     if livro_removido:
@@ -212,13 +212,13 @@ def carrinho():
     return render_template('carrinho.html', livros_carrinho=livros_carrinho)
 
 
-@meu_app.route("/desconectar")
+@app.route("/desconectar")
 def desconectar():
     session["nome"] = None
     session["livros"] = None 
     return redirect("/")
 
 
-@meu_app.route('/erro')
+@app.route('/erro')
 def erro():
     return render_template('erro.html', msg_erro=msg_erro, voltar_erro=voltar_erro)
