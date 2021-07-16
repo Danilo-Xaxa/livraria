@@ -6,7 +6,7 @@ ESQUEMA:
 2 - qualquer texto
 3 - links <a>
 4 - cor do botao:hover + cor da tabela
-5 - cor do ou botao
+5 - cor do botao
 
 MADRUGADA:
 #000 (black)
@@ -93,7 +93,7 @@ td {
 td > button {
     color: white;
     font-size: 1rem;
-    background-color: var(--corTdButton);
+    background-color: var(--corBotaoTd);
     border-color: black;
 }
 
