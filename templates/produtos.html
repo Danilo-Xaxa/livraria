@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 
-{% block final_head %}
-    <title>Produtos</title>
-    <link rel="stylesheet" href="../static/style.css">
+{% block subtitulo %}
+    Produtos
 {% endblock %}
 
 {% block corpo %}
@@ -10,7 +9,7 @@
     <form action="/produtos" method="post">
         <div class="central">
 
-            <input name="inputLivro" id="inputLivro" autofocus placeholder="Livro" type="text">
+            <input name="inputLivro" id="inputLivro" autofocus placeholder="Digite um livro" type="text">
 
             <div id="botoes_livros">
                 {% if livros %}

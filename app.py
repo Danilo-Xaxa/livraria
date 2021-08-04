@@ -222,3 +222,12 @@ def desconectar():
 @app.route('/erro')
 def erro():
     return render_template('erro.html', msg_erro=msg_erro, voltar_erro=voltar_erro)
+
+
+'''
+TODO
+-Tirar as variáveis globais (usar sessions)
+-Bug do Pessoas -> Carrinho
+-Fazer validação por HTML
+-Consertar também no PythonAnywhere
+'''

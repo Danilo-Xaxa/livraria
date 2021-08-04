@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 
-{% block final_head %}
-    <title>Pessoas</title>
-    <link rel="stylesheet" href="../static/style.css">
+{% block subtitulo %}
+    Pessoas
 {% endblock %}
 
 {% block corpo %}
@@ -25,7 +24,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/produtos">Livros disponíveis</a>
+        <a href="/produtos">Livros em estoque</a>
         <a href="/carrinho">Meu carrinho</a>
         <a href="/desconectar">Desconectar</a>
     </div>
