@@ -28,19 +28,13 @@ todos_livros = [
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    global msg_erro
-    global nome_pessoa
-    global fez
-    global carrinho_vazio
-
     if request.method == "GET":
         if session.get("nome"):
-            fez = 'entrou'
-            nome_pessoa = session.get("nome")
-            carrinho_vazio = False
+            session['fez'] = 'entrou'
+            session['carrinho_vazio'] = False
             return redirect('/pessoas')
         else:
-            carrinho_vazio = True
+            session['carrinho_vazio'] = True
             return render_template('index.html')
 
     elif request.method == "POST":
@@ -52,31 +46,40 @@ def index():
 
 @app.route('/cadastrar', methods=['GET', 'POST'])
 def cadastrar():
-    global msg_erro
-    global fez
-    global voltar_erro
-    global nome_pessoa
-    voltar_erro = '/cadastrar'
+    session['voltar_erro'] = '/cadastrar'
 
     if request.method == "GET":
         return render_template('cadastrar.html')
 
     elif request.method == "POST":
+        dicios = db.execute("SELECT email FROM registrados")
+
         if not request.form.get('nome'):
-            msg_erro = 'Você não tem nome?'
+            session['msg_erro'] = 'Você não tem nome?'
             return redirect('/erro')
 
         elif not request.form.get('email'):
-            msg_erro = 'Você não tem e-mail?'
+            session['msg_erro'] = 'Você não tem e-mail?'
             return redirect('/erro')
 
         elif not request.form.get('senha1') or not request.form.get('senha2'):
-            msg_erro = 'Preencha sua senha duas vezes.'
+            session['msg_erro'] = 'Preencha sua senha duas vezes.'
             return redirect('/erro')
 
         elif request.form.get('senha1') != request.form.get('senha2'):
-            msg_erro = 'As senhas não batem.'
+            session['msg_erro'] = 'As senhas não batem.'
             return redirect('/erro')
+
+        elif request.form.get('email') in [chave['email'] for chave in dicios]:
+            session['msg_erro'] = 'Esse e-mail já está cadastrado.'
+            return redirect('/erro')
+
+        EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
+        EMAIL_SENHA = getenv('EMAIL_SENHA')
+
+        servidor = SMTP("smtp.gmail.com", 587)
+        servidor.starttls()
+        servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
 
         nome = request.form.get('nome').strip().title()
         email = request.form.get('email').strip().lower()
@@ -88,43 +91,33 @@ def cadastrar():
         assunto = "Registrado"
         msg_email = (f"Subject: {assunto}\n\n{texto}")
         
-        EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
-        EMAIL_SENHA = getenv('EMAIL_SENHA')
-
-        servidor = SMTP("smtp.gmail.com", 587)
-        servidor.starttls()
-        servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
         servidor.sendmail(EMAIL_REMETENTE, email, msg_email.encode("utf8"))
 
-        fez = 'se cadastrou'
+        session['fez'] = 'se cadastrou'
 
         session["nome"] = db.execute("SELECT nome FROM registrados WHERE email= ?", email)[0]['nome']
 
         session["livros"] = []
 
-        nome_pessoa = session.get("nome")
+        session['nome_pessoa'] = session.get("nome")
 
         return redirect('/pessoas')
 
 
 @app.route('/entrar', methods=['GET', 'POST'])
 def entrar():
-    global msg_erro
-    global fez
-    global voltar_erro
-    global nome_pessoa
-    voltar_erro = '/entrar'
+    session['voltar_erro'] = '/entrar'
 
     if request.method == "GET":
         return render_template('entrar.html')
 
     elif request.method == "POST":
         if not request.form.get('email'):
-            msg_erro = 'Você não tem e-mail?'
+            session['msg_erro'] = 'Você não tem e-mail?'
             return redirect('/erro')
 
         elif not request.form.get('senha'):
-            msg_erro = 'Você não tem senha?'
+            session['msg_erro'] = 'Você não tem senha?'
             return redirect('/erro')
 
         email = request.form.get('email')
@@ -140,64 +133,57 @@ def entrar():
             senhas_registradas.append(linha['senha'])
 
         if email not in emails_registrados:
-            msg_erro = 'E-mail não cadastrado! Tente novamente.'
+            session['msg_erro'] = 'E-mail não cadastrado! Tente novamente.'
             return redirect('/erro')
         elif senha not in senhas_registradas:
-            msg_erro = 'Senha incorreta! Tente novamente.'
+            session['msg_erro'] = 'Senha incorreta! Tente novamente.'
             return redirect('/erro')
 
-        fez = 'entrou'
+        session['fez'] = 'entrou'
 
         session["nome"] = db.execute("SELECT nome FROM registrados WHERE email= ?", email)[0]['nome']
 
         session["livros"] = []
-
-        nome_pessoa = session.get("nome")
 
         return redirect('/pessoas')
 
 
 @app.route('/pessoas')
 def pessoas():
-    msg_sucesso = f'Parabéns, {nome_pessoa}! Você {fez} com sucesso!'
+    msg_sucesso = f'Parabéns, {session.get("nome")}! Você {session.get("fez")} com sucesso!'
 
-    linhas = db.execute("SELECT nome, email FROM registrados")
+    nomes_emails = db.execute("SELECT nome, email FROM registrados")
 
-    return render_template('pessoas.html', pessoas=linhas, msg_sucesso=msg_sucesso)
+    return render_template('pessoas.html', nomes_emails=nomes_emails, msg_sucesso=msg_sucesso)
 
 
 @app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
-    global livros_carrinho
-    global livros_adicionados
-    global carrinho_vazio
-    global msg_erro
-    global voltar_erro
-    voltar_erro = '/produtos'
+    session['voltar_erro'] = '/produtos'
 
-    if carrinho_vazio:
-        livros_carrinho = []
+    if session['carrinho_vazio']:
+        session['livros_carrinho'] = []
     else:
-        livros_carrinho = session.get("livros")
+        session['livros_carrinho'] = session.get("livros")
 
-    livros_restantes = [livro for livro in todos_livros if livro not in livros_carrinho]
+    livros_restantes = [livro for livro in todos_livros if livro not in session['livros_carrinho']]
 
     if request.method == "GET":
         return render_template('produtos.html', livros=livros_restantes)
 
     elif request.method == "POST":
         if request.form.getlist('escolhido'):
-            livros_adicionados = request.form.getlist('escolhido')
+            session['livros_adicionados'] = request.form.getlist('escolhido')
 
-            for livro in livros_adicionados:
+            for livro in session['livros_adicionados']:
                 if livro in livros_restantes:
-                    livros_carrinho.append(livro)
+                    session['livros_carrinho'].append(livro)
                 else:
-                    msg_erro = 'Algum livro selecionado não está disponível...'
+                    session['msg_erro'] = 'Algum livro selecionado não está disponível...'
                     return redirect('/erro')
 
-            carrinho_vazio = False
-            session["livros"] = livros_carrinho
+            session['carrinho_vazio'] = False
+            session["livros"] = session['livros_carrinho']
 
     return redirect('/carrinho')
 
@@ -206,9 +192,13 @@ def produtos():
 def carrinho():
     livro_removido = request.args.get('removido')
     if livro_removido:
-        livros_carrinho.remove(livro_removido)
-        session["livros"] = livros_carrinho
-        
+        session['livros_carrinho'].remove(livro_removido)
+        session["livros"] = session['livros_carrinho']
+    
+    try:
+        livros_carrinho = session['livros_carrinho']
+    except:
+        livros_carrinho = []
     return render_template('carrinho.html', livros_carrinho=livros_carrinho)
 
 
@@ -221,13 +211,10 @@ def desconectar():
 
 @app.route('/erro')
 def erro():
-    return render_template('erro.html', msg_erro=msg_erro, voltar_erro=voltar_erro)
+    return render_template('erro.html', msg_erro=session['msg_erro'], voltar_erro=session['voltar_erro'])
 
 
 '''
 TODO
--Tirar as variáveis globais (usar sessions)
--Bug do Pessoas -> Carrinho
--Fazer validação por HTML
 -Consertar também no PythonAnywhere
 '''

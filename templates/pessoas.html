@@ -16,10 +16,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for pessoa in pessoas %}
+                {% for item in nomes_emails %}
                 <tr>
-                    <td scope="row">{{ pessoa.nome }}</td>
-                    <td scope="row">{{ pessoa.email }}</td>
+                    <td scope="row">{{ item.nome }}</td>
+                    <td scope="row">{{ item.email }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

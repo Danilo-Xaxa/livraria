@@ -7,10 +7,10 @@
 {% block corpo %}
     <form action="/cadastrar" method="post">
         <div class="central">
-        <input name="nome" autofocus placeholder="Nome" type="text">
-        <input name="email" autofocus placeholder="E-mail" type="email">
-        <input name="senha1" autofocus placeholder="Senha" type="password">
-        <input name="senha2" autofocus placeholder="Confirmar senha" type="password">
+        <input name="nome" autofocus placeholder="Nome" type="text" required>
+        <input name="email" autofocus placeholder="E-mail" type="email" required>
+        <input name="senha1" autofocus placeholder="Senha" type="password" required>
+        <input name="senha2" autofocus placeholder="Confirmar senha" type="password" required>
         <input type="submit" value="Enviar">
         </div>
     </form>
