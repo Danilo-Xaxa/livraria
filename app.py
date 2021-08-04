@@ -97,9 +97,7 @@ def cadastrar():
 
         session["nome"] = db.execute("SELECT nome FROM registrados WHERE email= ?", email)[0]['nome']
 
-        session["livros"] = []
-
-        session['nome_pessoa'] = session.get("nome")
+        session["livros_carrinho"] = []
 
         return redirect('/pessoas')
 
@@ -143,7 +141,7 @@ def entrar():
 
         session["nome"] = db.execute("SELECT nome FROM registrados WHERE email= ?", email)[0]['nome']
 
-        session["livros"] = []
+        session["livros_carrinho"] = []
 
         return redirect('/pessoas')
 
@@ -163,8 +161,6 @@ def produtos():
 
     if session['carrinho_vazio']:
         session['livros_carrinho'] = []
-    else:
-        session['livros_carrinho'] = session.get("livros")
 
     livros_restantes = [livro for livro in todos_livros if livro not in session['livros_carrinho']]
 
@@ -183,7 +179,6 @@ def produtos():
                     return redirect('/erro')
 
             session['carrinho_vazio'] = False
-            session["livros"] = session['livros_carrinho']
 
     return redirect('/carrinho')
 
@@ -193,28 +188,23 @@ def carrinho():
     livro_removido = request.args.get('removido')
     if livro_removido:
         session['livros_carrinho'].remove(livro_removido)
-        session["livros"] = session['livros_carrinho']
     
     try:
         livros_carrinho = session['livros_carrinho']
     except:
         livros_carrinho = []
+
     return render_template('carrinho.html', livros_carrinho=livros_carrinho)
 
 
 @app.route("/desconectar")
 def desconectar():
     session["nome"] = None
-    session["livros"] = None 
+    session["livros_carrinho"] = None 
     return redirect("/")
 
 
 @app.route('/erro')
 def erro():
     return render_template('erro.html', msg_erro=session['msg_erro'], voltar_erro=session['voltar_erro'])
-
-
-'''
-TODO
--Consertar também no PythonAnywhere
-'''
+    
