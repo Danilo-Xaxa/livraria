@@ -1,4 +1,4 @@
-// Determina do turno, da paleta de cores e do favicon de cada turno
+// Determina o turno, a paleta de cores e o favicon de cada turno
 (function principal() {
     // Descobre a hora e o minuto atual
     let agora = new Date()
