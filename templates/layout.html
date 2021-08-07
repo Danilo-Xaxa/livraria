@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Padrão -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/style.css">
-    <title>Livraria - {% block subtitulo %} {% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../static/imagens/favicon-livros.ico" type="image/x-icon">
+
+    <!-- Criador do Bootstrap Example Product -->
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+
+    <!-- Estilos (dois .css, dois imports do Bootstrap e um estilo interno) -->
+    <!-- <link href="../static/style.css" rel="stylesheet"> -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
+
+    <link href="/static/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+    </style>
+
+    <link href="/static/product.css" rel="stylesheet">
+
+    <title>DX Livraria - {% block subtitulo %} {% endblock %}</title>
 </head>
 <body>
     {% block corpo %} {% endblock %}
-    <script src="../static/script.js"></script>
+    <script src="/static/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../static/script.js"></script> -->
 </body>
 </html>
+
+<!-- DICA DE FLASK: TUDO QUE É ESTÁTICO TEM QUE ESTAR DENTRO DE STATIC, PORRA (passei a noite inteira tentando debugar pq eu tava botando assets fora de static e depois tentando referenciar) -->

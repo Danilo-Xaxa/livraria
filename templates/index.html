@@ -1,15 +1,93 @@
 {% extends "layout.html" %}
 
 {% block subtitulo %}
-    Olá
+    Bem-vindos!
 {% endblock %}
 
 {% block corpo %}
-    <h1 id="bomTurno">Bom o quê?</h1>
-    <form action="/" method="post">
-        <div class="central">
-            <input type="submit" name="botao" value="Cadastrar">
-            <input type="submit" name="botao" value="Entrar">
-        </div>
-    </form>
+
+<header class="site-header sticky-top py-1">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#" aria-label="Página Inicial">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewbox="0 0 24 24"><title>Página inicial</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+    </a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Cadastrar</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Entrar</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Livros em estoque</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Meu carrinho</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Pessoas</a>
+  </nav>
+</header>
+
+<main>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style="background-color: #DDC8C4 !important;">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">DX Livraria</h1>
+      <p class="lead fw-normal">Neste site você encontrará grandes clássicos da literatura à sua disposição</p>
+      <a class="btn btn-outline-secondary" href="#" style="color: #353a47;">Nossos livros</a>
+    </div>
+    <div class="product-device d-none d-md-block parallax" id="celular1"></div>
+    <div class="product-device product-device-2 d-none d-md-block parallax" id="celular2"></div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="background-color: #353a47 !important;">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Romeu e Julieta</h2>
+        <p class="lead">A mais clássica tragédia romântica.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto responsivo" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" id="romeu_julieta"></div>
+    </div>
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #2AB7CA !important;">
+      <div class="my-3 p-3">
+        <h2 class="display-5">O Pequeno Príncipe</h2>
+        <p class="lead">Uma curta e lúdica viagem.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto responsivo" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" id="pequeno_principe"></div>
+    </div>
+  </div>
+
+  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden" style="background-color: #DDC8C4 !important;">
+      <div class="my-3 p-3" >
+        <h2 class="display-5">O Mundo de Sofia</h2>
+        <p class="lead">Um passeio pela história da filosofia.</p>
+      </div>
+      <div class="bg-dark shadow-sm mx-auto responsivo" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" id="mundo_sofia"></div>
+    </div>
+    <div class="bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="background-color: #8C1C13 !important;">
+      <div class="my-3 py-3">
+        <h2 class="display-5">A Arte da Guerra</h2>
+        <p class="lead">Os antigos ensinamentos que nunca envelhecem.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto responsivo" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;" id="arte_guerra"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="container py-3">
+  <div class="row">
+    <div class="col-12 col-md" style="margin-bottom: 10px;">
+      <h3>Desenvolvido por <a href="" style="text-decoration: none;">Danilo Xaxá</a></h3>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Meus outros projetos</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="https://daniloxaxa.pythonanywhere.com/cadastrar">DX Invest</a></li>
+        <li><a class="link-secondary" href="https://danilox.pythonanywhere.com/">Aniversários</a></li>
+        <li><a class="link-secondary" href="https://danilo-xaxa.github.io/dark_site/">Dark Site</a></li>
+        <li><a class="link-secondary" href="https://danilo-xaxa.github.io/ilha_esmeralda/">Ilha Esmeralda</a></li>
+        <li><a class="link-secondary" href="https://danilo-xaxa.github.io/android/">Android</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Minhas redes</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="https://github.com/Danilo-Xaxa" target="_blank">GitHub</a></li>
+        <li><a class="link-secondary" href="https://www.linkedin.com/in/danilo-xax%C3%A1-7535321b3/" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
 {% endblock %}

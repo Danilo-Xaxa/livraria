@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+:root {
+  --blackHalf: rgba(0, 0, 0, 0.5);
+  --mintCream: #EFF9F0;
+  --champagnePink:#DDC8C4;
+  --seaGreen: #09814A;
+  --darkRed: #8C1C13;
+  --pacificBlue: #2AB7CA;
+  --charcoal: #353a47;
+}
+
+body {
+  background-color: var(--mintCream);
+}
+
+.container {
+  max-width: 960px;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: var(--champagnePink);
+  transition: color .15s ease-in-out;
+}
+.site-header a:hover {
+  color: var(--mintCream);
+  text-decoration: none;
+}
+
+/*
+ * Dummy devices (replace them with your own or something else entirely!)
+ */
+
+.product-device {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 300px;
+  height: 540px;
+  background-color: #333;
+  border-radius: 21px;
+  transform: rotate(30deg);
+}
+
+.product-device::before {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  bottom: 10%;
+  left: 10px;
+  content: "";
+  border-radius: 5px;
+}
+
+.product-device-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color: #e5e5e5;
+}
+
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal > * {
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    flex: 1;
+  }
+}
+
+nav > a {
+  text-decoration: none;
+}
+
+#celular1 {
+  background-image: url("imagens/livros.jpeg");
+  background-color: var(--mintCream) !important;
+}
+
+#celular2 {
+  background-image: url("imagens/livros.jpeg");
+  background-color: var(--mintCream) !important;}
+
+#romeu_julieta {
+  background-image: url("imagens/romeu_julieta.jpg");
+  min-height: 90%;
+}
+
+#pequeno_principe {
+  background-image: url("imagens/pequeno_principe.jpg");
+  min-height: 130%;
+}
+
+#mundo_sofia {
+  background-image: url("imagens/mundo_sofia.jpg");
+  min-height: 90%;
+}
+
+#arte_guerra {
+  background-image: url("imagens/arte_guerra.jpeg");
+  min-height: 105% !important;
+}
+
+.responsivo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax {
+  background-size: 100% auto !important;
+  background-attachment: fixed;
+}
+
+footer a {
+  color: var(--darkRed);
+}
+
+footer a:hover {
+  color: var(--seaGreen);
+}
+
+.btn:hover {
+  color: black !important;
+}
