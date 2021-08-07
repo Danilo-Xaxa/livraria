@@ -87,14 +87,16 @@ nav > a {
   text-decoration: none;
 }
 
-#celular1 {
+#device1, #device2 {
   background-image: url("imagens/livros.jpeg");
-  background-color: var(--mintCream) !important;
+  background-color: var(--champagnePink);
 }
 
-#celular2 {
-  background-image: url("imagens/livros.jpeg");
-  background-color: var(--mintCream) !important;}
+@media only screen and (max-width: 1035px) {
+  #device1, #device2 {
+      display: none !important;
+  }
+}
 
 #romeu_julieta {
   background-image: url("imagens/romeu_julieta.jpg");
@@ -125,6 +127,10 @@ nav > a {
 .parallax {
   background-size: 100% auto !important;
   background-attachment: fixed;
+}
+
+footer {
+  text-align: center;
 }
 
 footer a {
