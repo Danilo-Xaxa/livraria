@@ -5,11 +5,16 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/entrar" method="post">
-        <div class="central">
-        <input name="email" autofocus placeholder="E-mail" type="email" required>
-        <input name="senha" autofocus placeholder="Senha" type="password" required>
-        <input type="submit" value="Entrar">
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light cadastrarEntrar" style="background-color: #DDC8C4 !important;">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal">Entrar</h1>
+        <div class="formulario">
+        <form action="/entrar" method="post">
+            <input name="email" autofocus placeholder="E-mail" type="email" required>
+            <input name="senha" autofocus placeholder="Senha" type="password" required>
+            <input type="submit" value="Entrar">
+        </form>
         </div>
-    </form>
+    </div>
+</div>  
 {% endblock %}

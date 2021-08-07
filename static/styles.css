@@ -144,3 +144,22 @@ footer a:hover {
 .btn:hover {
   color: black !important;
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  text-align: center;
+  height: auto;
+  margin-top: auto;
+}
+
+.cadastrarEntrar {
+  padding: 0 !important;
+}
+
+.formularioTODO {
+}

@@ -39,6 +39,7 @@
 
     <title>DX Livraria - {% block subtitulo %} {% endblock %}</title>
 </head>
+
 <body>
   <header class="site-header sticky-top py-1">
     <nav class="container d-flex flex-column flex-md-row justify-content-between">
@@ -53,7 +54,9 @@
     </nav>
   </header>
 
+  <main>
   {% block main %} {% endblock %}
+  </main>
 
   <footer class="container py-3">
     <div class="row">
