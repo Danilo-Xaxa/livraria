@@ -40,9 +40,49 @@
     <title>DX Livraria - {% block subtitulo %} {% endblock %}</title>
 </head>
 <body>
-    {% block corpo %} {% endblock %}
-    <script src="/static/script.js"></script>
-    <script src="/static/assets/dist/js/bootstrap.bundle.min.js"></script>
+  <header class="site-header sticky-top py-1">
+    <nav class="container d-flex flex-column flex-md-row justify-content-between">
+      <a class="py-2" href="/" aria-label="Página Inicial">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewbox="0 0 24 24"><title>Página inicial</title><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/></svg>
+      </a>
+      <a class="py-2 d-none d-md-inline-block" href="/cadastrar">Cadastrar</a>
+      <a class="py-2 d-none d-md-inline-block" href="/entrar">Entrar</a>
+      <a class="py-2 d-none d-md-inline-block" href="#">Livros em estoque</a>
+      <a class="py-2 d-none d-md-inline-block" href="#">Meu carrinho</a>
+      <a class="py-2 d-none d-md-inline-block" href="#">Pessoas</a>
+    </nav>
+  </header>
+
+  {% block main %} {% endblock %}
+
+  <footer class="container py-3">
+    <div class="row">
+      <div class="col-12 col-md" style="margin-bottom: 10px;">
+        <h3>Desenvolvido por <a href="https://github.com/Danilo-Xaxa" target="_blank" style="text-decoration: none;">Danilo Xaxá</a></h3>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Meus outros projetos</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="https://daniloxaxa.pythonanywhere.com/cadastrar">DX Invest</a></li>
+          <li><a class="link-secondary" href="https://danilox.pythonanywhere.com/">Aniversários</a></li>
+          <li><a class="link-secondary" href="https://danilo-xaxa.github.io/dark_site/">Dark Site</a></li>
+          <li><a class="link-secondary" href="https://danilo-xaxa.github.io/ilha_esmeralda/">Ilha Esmeralda</a></li>
+          <li><a class="link-secondary" href="https://danilo-xaxa.github.io/android/">Android</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Minhas redes</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary" href="https://github.com/Danilo-Xaxa" target="_blank">GitHub</a></li>
+          <li><a class="link-secondary" href="https://www.linkedin.com/in/danilo-xax%C3%A1-7535321b3/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+  <script src="/static/assets/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 </html>
 
