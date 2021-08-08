@@ -189,13 +189,28 @@ footer {
 }
 
 .btn-primary {
-  color: black;
-  background-color: var(--pacificBlue);
-  border-color: var(--pacificBlue) !important;
+  margin-top: .5em !important;
+  width: 45% !important;
+  color: var(--mintCream);
+  background-color: var(--charcoal);
+  border-color: var(--charcoal) !important;
 }
 
 .btn-primary:hover {
-  color: white !important;
-  background-color: var(--charcoal);
-  border-color: var(--charcoal) !important;
+  color: var(--mintCream) !important;
+  background-color: var(--darkRed);
+  border-color: var(--darkRed) !important;
+}
+
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: rgb(13 110 253 / 25%);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.form-floating {
+  width: 60% !important;
+  margin: 8px auto 8px auto;
 }
