@@ -159,7 +159,6 @@ footer {
 
 .cadastrarEntrar {
   padding: 0 !important;
-  margin-bottom: -16px !important;
 }
 
 .form-signin {
@@ -187,4 +186,16 @@ footer {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.btn-primary {
+  color: black;
+  background-color: var(--pacificBlue);
+  border-color: var(--pacificBlue) !important;
+}
+
+.btn-primary:hover {
+  color: white !important;
+  background-color: var(--charcoal);
+  border-color: var(--charcoal) !important;
 }

@@ -1,101 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <!-- Padrão -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "layout.html" %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../static/imagens/favicon-livros.ico" type="image/x-icon">
+{% block subtitulo %}
+    Entrar
+{% endblock %}
 
-    <!-- Criador do Bootstrap Example Product -->
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-
-    <!-- Estilos (1 import do Bootstrap, 2 .css e um estilo interno) -->
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
-
-    <link href="/static/recursos/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          user-select: none;
-        }
-  
-        @media (min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-    </style>
-
-    <link href="/static/styles.css" rel="stylesheet">
-
-    <title>DX Livraria - Entrar</title>
-</head>
-
-<body class="text-center">
-  
-  <main class="form-signin">
+{% block main %}
 
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light cadastrarEntrar" style="background-color: #DDC8C4 !important;">
-
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-
-      <form action="/entrar" method="post">
-        <h1 class="display-4 fw-normal">Entrar</h1>
-        <div class="form-floating">
-          <input type="email" autofocus required class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
-          <label for="floatingInput">E-mail</label>
-        </div>
-        
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="senha" autofocus required>
-          <label for="floatingPassword">Senha</label>
-        </div>
-  
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
-        <input type="submit" value="Entrar">
-      </form>  
-
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+  <h1 class="display-4 fw-normal">Acesse sua conta</h1>
+  <form action="/entrar" method="post">
+    <div class="form-floating">
+      <input type="email" autofocus required class="form-control" id="floatingInput" placeholder="nome@exemplo.com">
+      <label for="floatingInput">E-mail</label>
     </div>
-</div>  
-  </main>
-
-  <footer class="container py-3">
-    <div class="row">
-      <div class="col-12 col-md" style="margin-bottom: 10px;">
-        <h3>Desenvolvido por <a href="https://github.com/Danilo-Xaxa" target="_blank" style="text-decoration: none;">Danilo Xaxá</a></h3>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Meus outros projetos</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="https://daniloxaxa.pythonanywhere.com/cadastrar">DX Invest</a></li>
-          <li><a class="link-secondary" href="https://danilox.pythonanywhere.com/">Aniversários</a></li>
-          <li><a class="link-secondary" href="https://danilo-xaxa.github.io/dark_site/">Dark Site</a></li>
-          <li><a class="link-secondary" href="https://danilo-xaxa.github.io/ilha_esmeralda/">Ilha Esmeralda</a></li>
-          <li><a class="link-secondary" href="https://danilo-xaxa.github.io/android/">Android</a></li>
-        </ul>
-      </div>
-      <div class="col-6 col-md">
-        <h5>Minhas redes</h5>
-        <ul class="list-unstyled text-small">
-          <li><a class="link-secondary" href="https://github.com/Danilo-Xaxa" target="_blank">GitHub</a></li>
-          <li><a class="link-secondary" href="https://www.linkedin.com/in/danilo-xax%C3%A1-7535321b3/" target="_blank">LinkedIn</a></li>
-        </ul>
-      </div>
+    
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Senha" name="senha" autofocus required>
+      <label for="floatingPassword">Senha</label>
     </div>
-  </footer>
 
-  <script src="/static/script.js"></script>
-  <script src="/static/recursos/dist/js/bootstrap.bundle.min.js"></script>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+    
+  </form>
+  </div>
+</div>
 
-  </body>
-
-</html>
+{% endblock %}

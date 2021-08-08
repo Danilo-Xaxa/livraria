@@ -6,32 +6,35 @@
 
 {% block main %}
 
-<style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-</style>
-
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light cadastrarEntrar" style="background-color: #DDC8C4 !important;">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-    <h1 class="display-4 fw-normal">Cadastrar</h1>
-    <form action="/cadastrar" method="post">
-        <input name="nome" autofocus placeholder="Nome" type="text" required>
-        <input name="email" autofocus placeholder="E-mail" type="email" required>
-        <input name="senha1" autofocus placeholder="Senha" type="password" required>
-        <input name="senha2" autofocus placeholder="Confirmar senha" type="password" required>
-        <input type="submit" value="Enviar">
-    </form>
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+  <h1 class="display-4 fw-normal">Crie uma conta</h1>
+
+  <form action="/cadastrar" method="post">
+    <div class="form-floating">
+      <input type="text" autofocus required class="form-control" id="floatingInput1" name="nome" placeholder="Nome">
+      <label for="floatingInput1">Nome</label>
     </div>
+
+    <div class="form-floating">
+      <input type="email" autofocus required class="form-control" id="floatingInput2" name="email" placeholder="nome@exemplo.com">
+      <label for="floatingInput2">E-mail</label>
+    </div>
+    
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword1" placeholder="Senha" name="senha1" autofocus required>
+      <label for="floatingPassword1">Senha</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword2" placeholder="Confirmar senha" name="senha2" autofocus required>
+      <label for="floatingPassword2">Confirmar senha</label>
+    </div>
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Cadastrar</button>
+    
+  </form>
+  </div>
 </div>
+
 {% endblock %}
