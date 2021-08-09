@@ -210,3 +210,11 @@ footer {
   width: 60% !important;
   margin: 8px auto 8px auto;
 }
+
+th, td {
+  font-size: 1.5em;
+}
+
+.tituloPessoas {
+  font-size: 3em !important;
+}
