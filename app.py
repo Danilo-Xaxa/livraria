@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, flash
 from flask_session import Session
 from cs50 import SQL
 from smtplib import SMTP
@@ -103,11 +103,11 @@ def cadastrar():
 
 
 @app.route('/entrar', methods=['GET', 'POST'])
-def entrar():
+def entrar(antes=""):
     session['voltar_erro'] = '/entrar'
 
     if request.method == "GET":
-        return render_template('entrar.html')
+        return render_template('entrar.html', antes=antes)
 
     elif request.method == "POST":
         if not request.form.get('email'):
@@ -143,11 +143,14 @@ def entrar():
 
         session["livros_carrinho"] = []
 
-        return redirect('/pessoas')
+        return redirect('/pessoas')  # mudar pra redirect('/produtos')
 
 
 @app.route('/pessoas')
 def pessoas():
+    if not session.get("nome"):
+        return entrar("antes")
+
     msg_sucesso = f'Parabéns, {session.get("nome")}! Você {session.get("fez")} com sucesso!'
 
     nomes_emails = db.execute("SELECT nome, email FROM registrados")
@@ -158,6 +161,9 @@ def pessoas():
 @app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
     session['voltar_erro'] = '/produtos'
+
+    if not session.get("nome"):
+        return entrar("antes")
 
     if session['carrinho_vazio']:
         session['livros_carrinho'] = []
@@ -185,6 +191,9 @@ def produtos():
 
 @app.route('/carrinho')
 def carrinho():
+    if not session.get("nome"):
+        return entrar("antes")
+
     livro_removido = request.args.get('removido')
     if livro_removido:
         session['livros_carrinho'].remove(livro_removido)
@@ -199,9 +208,13 @@ def carrinho():
 
 @app.route("/desconectar")
 def desconectar():
-    session["nome"] = None
-    session["livros_carrinho"] = None 
-    return redirect("/")
+    if not session.get("nome") and not session.get("livros_carrinho"):
+        flash('Você já está desconectado!')
+        return redirect("/")
+    else:
+        session["nome"] = None
+        session["livros_carrinho"] = None 
+        return redirect("/")
 
 
 @app.route('/erro')
