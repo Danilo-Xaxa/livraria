@@ -160,10 +160,10 @@ def pessoas():
 
 @app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
-    session['voltar_erro'] = '/produtos'
-
     if not session.get("nome"):
         return entrar(redirecionado=True)
+        
+    session['voltar_erro'] = '/produtos'
 
     if session['carrinho_vazio']:
         session['livros_carrinho'] = []
@@ -227,6 +227,7 @@ A página / mostra os botões de *entrar* e *cadastrar*, depois de entrado ou ca
 
 A lógica agora é conseguir (ou pelo menos tentar) acessar qualquer página vindo de qualquer página.
 
+TODO: BUG? Entrar redirecionado ainda deixa a route como /produtos, por exemplo
 TODO: /produtos
 TODO: /carrinho
 TODO: /erro
