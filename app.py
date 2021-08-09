@@ -208,3 +208,16 @@ def desconectar():
 def erro():
     return render_template('erro.html', msg_erro=session['msg_erro'], voltar_erro=session['voltar_erro'])
     
+'''
+A lógica do back-end ainda funciona de acordo com o antigo front-end. Isto é:
+A página / mostra os botões de *entrar* e *cadastrar*, depois de entrado ou cadastrado, a página principal é a /pessoas, sendo possível acessar /produtos, /carrinho e /desconectar também a qualquer momento.
+
+A lógica agora é conseguir (ou pelo menos tentar) acessar qualquer página vindo de qualquer página.
+
+TODO: /produtos
+TODO: /carrinho
+TODO: /erro
+TODO: /erro_artificial
+TODO: Salvar carrinho de quem quiser
+TODO: Mandar carrinho pro e-mail de quem quiser
+'''

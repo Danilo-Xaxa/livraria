@@ -218,3 +218,18 @@ th, td {
 .tituloPessoas {
   font-size: 3em !important;
 }
+
+table {
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 992px) {
+  th, td {
+    font-size: 1em;
+  }
+  .tituloPessoas {
+    font-size: 2em !important;
+  }
+}
