@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, flash
+from flask import Flask, render_template, redirect, flash, request, session
 from flask.helpers import url_for
 from flask_session import Session
 from cs50 import SQL
@@ -88,7 +88,7 @@ def cadastrar():
 
         session["livros_carrinho"] = []
 
-        return redirect('/pessoas')
+        return redirect(session.get('pagina_retorno') or '/pessoas')  # mudar pra redirect('/produtos')
 
 
 @app.route('/entrar/rota_<rota>', methods=['GET', 'POST'])
@@ -132,12 +132,13 @@ def entrar(rota):
 
         session["livros_carrinho"] = []
 
-        return redirect('/pessoas')  # mudar pra redirect('/produtos')
+        return redirect(session.get('pagina_retorno') or '/pessoas')  # mudar pra redirect('/produtos')
 
 
 @app.route('/pessoas')
 def pessoas():
     if not session.get("nome"):
+        session['pagina_retorno'] = '/pessoas'
         return redirect(url_for('entrar', rota="indireta"))
 
     msg_sucesso = f'Parabéns, {session.get("nome")}! Você {session.get("fez")} com sucesso!'
@@ -150,10 +151,11 @@ def pessoas():
 @app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
     if not session.get("nome"):
+        session['pagina_retorno'] = '/produtos'
         return redirect(url_for('entrar', rota="indireta"))
-        
-    session['voltar_erro'] = '/produtos'
 
+    session['voltar_erro'] = '/produtos'
+        
     if session.get("carrinho_vazio") == True:
         session['livros_carrinho'] = []
 
@@ -181,6 +183,7 @@ def produtos():
 @app.route('/carrinho')
 def carrinho():
     if not session.get("nome"):
+        session['pagina_retorno'] = '/carrinho'
         return redirect(url_for('entrar', rota="indireta"))
 
     livro_removido = request.args.get('removido')
@@ -221,6 +224,5 @@ TODO: /produtos
 TODO: /carrinho
 TODO: /erro
 TODO: /erro_artificial (navegação artficial pela URL)
-TODO: Salvar carrinho de quem quiser
-TODO: Mandar carrinho pro e-mail de quem quiser
+TODO: Substituir session['voltar_erro'], session['pagina_retorno'] por algo melhor
 '''
