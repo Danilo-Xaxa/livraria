@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, request, session, flash
+from flask.helpers import url_for
 from flask_session import Session
 from cs50 import SQL
 from smtplib import SMTP
@@ -29,7 +30,7 @@ todos_livros = [
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "GET":
-        # tirar as linhas 33-38 ???
+        # tirar as linhas 34-39 ???
         if session.get("nome"):
             session['fez'] = 'entrou'
             session['carrinho_vazio'] = False
@@ -37,12 +38,6 @@ def index():
         else:
             session['carrinho_vazio'] = True
             return render_template('index.html')
-
-    elif request.method == "POST":
-        if request.form['botao'] == 'Cadastrar':
-            return redirect('/cadastrar')
-        elif request.form['botao'] == 'Entrar':
-            return redirect('/entrar')
 
 
 @app.route('/cadastrar', methods=['GET', 'POST'])
@@ -103,12 +98,12 @@ def cadastrar():
         return redirect('/pessoas')
 
 
-@app.route('/entrar', methods=['GET', 'POST'])
-def entrar(redirecionado=False):
-    session['voltar_erro'] = '/entrar'
+@app.route('/entrar/rota_<rota>', methods=['GET', 'POST'])
+def entrar(rota):
+    session['voltar_erro'] = f"/entrar/rota_{rota}"
 
     if request.method == "GET":
-        return render_template('entrar.html', redirecionado=redirecionado)
+        return render_template('entrar.html', rota=rota)
 
     elif request.method == "POST":
         if not request.form.get('email'):
@@ -150,7 +145,7 @@ def entrar(redirecionado=False):
 @app.route('/pessoas')
 def pessoas():
     if not session.get("nome"):
-        return entrar(redirecionado=True)
+        return redirect(url_for('entrar', rota="indireta"))
 
     msg_sucesso = f'Parabéns, {session.get("nome")}! Você {session.get("fez")} com sucesso!'
 
@@ -162,7 +157,7 @@ def pessoas():
 @app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
     if not session.get("nome"):
-        return entrar(redirecionado=True)
+        return redirect(url_for('entrar', rota="indireta"))
         
     session['voltar_erro'] = '/produtos'
 
@@ -193,7 +188,7 @@ def produtos():
 @app.route('/carrinho')
 def carrinho():
     if not session.get("nome"):
-        return entrar(redirecionado=True)
+        return redirect(url_for('entrar', rota="indireta"))
 
     livro_removido = request.args.get('removido')
     if livro_removido:
