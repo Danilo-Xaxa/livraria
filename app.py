@@ -224,5 +224,4 @@ TODO: /produtos
 TODO: /carrinho
 TODO: /erro
 TODO: /erro_artificial (navegação artficial pela URL)
-TODO: Substituir session['voltar_erro'], session['pagina_retorno'] por algo melhor
 '''

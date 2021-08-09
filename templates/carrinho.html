@@ -5,25 +5,24 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Seu carrinho de compras</h1>
-    <div class="central">
-        {% if livros_carrinho %}
-            <table class="table table-striped table-dark">
-                <tbody>
-                    {% for livro in livros_carrinho %}
-                    <tr id="{{ livro }}">
-                        <td scope="row">{{ loop.index }}</td>
-                        <td scope="row">{{ livro }}</td>
-                        <td scope="row"><button type="button" id="remover {{ livro }}" onclick="removeLivro('{{ livro }}')">Remover</button></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% else %}
-            <h2>Não há livros no carrinho :(</h2>
-        {% endif %}
-    <a href="/produtos">Livros em estoque</a>
-    <a href="/pessoas">Pessoas cadastradas</a>
-    <a href="/desconectar">Desconectar</a>
-    </div>
+
+<h1>Seu carrinho de compras</h1>
+
+  {% if livros_carrinho %}
+    <table class="table table-striped table-dark">
+      <tbody>
+        {% for livro in livros_carrinho %}
+          <tr id="{{ livro }}">
+            <td scope="row">{{ loop.index }}</td>
+            <td scope="row">{{ livro }}</td>
+            <td scope="row"><button type="button" id="remover {{ livro }}" onclick="removeLivro('{{ livro }}')">Remover</button></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  {% else %}
+    <h2>Não há livros no carrinho :(</h2>
+  {% endif %}
+
 {% endblock %}

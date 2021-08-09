@@ -5,28 +5,22 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Livros em estoque</h1>
-    <form action="/produtos" method="post">
-        <div class="central">
 
-            <input name="inputLivro" id="inputLivro" autofocus placeholder="Digite um livro" type="text">
+<h1>Livros em estoque</h1>
+  <form action="/produtos" method="post">
+    <input name="inputLivro" id="inputLivro" autofocus placeholder="Digite um livro" type="text">
 
-            <div id="botoes_livros">
-                {% if livros %}
-                    {% for livro in livros %}
-                    <input type="checkbox" class="btn-check" id="{{ livro }}" autocomplete="off" value="{{ livro }}" name="escolhido" style="display: none;">
-                    <label class="btn btn-primary" for="{{ livro }}">{{ livro }}</label>
-                    {% endfor %}
-                {% else %}
-                    <h2>Não sobrou nenhum livro :)</h2>
-                {% endif %}
-            </div>
+      {% if livros %}
+        {% for livro in livros %}
+          <input type="checkbox" class="btn-check" id="{{ livro }}" autocomplete="off" value="{{ livro }}" name="escolhido" style="display: none;">
+          <label class="btn btn-primary" for="{{ livro }}">{{ livro }}</label>
+        {% endfor %}
 
-            <input type="submit" name="adicionar" value="Ir ao carrinho">
+      {% else %}
+          <h2>Não sobrou nenhum livro :)</h2>
+      {% endif %}
+      
+    <input type="submit" name="adicionar" value="Ir ao carrinho">
+  </form>
 
-        </div>
-    </form>
-    <a href="/carrinho">Meu carrinho</a>
-    <a href="/pessoas">Pessoas cadastradas</a>
-    <a href="/desconectar">Desconectar</a>
 {% endblock %}
