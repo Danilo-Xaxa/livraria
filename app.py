@@ -103,11 +103,11 @@ def cadastrar():
 
 
 @app.route('/entrar', methods=['GET', 'POST'])
-def entrar(antes=""):
+def entrar(redirecionado=False):
     session['voltar_erro'] = '/entrar'
 
     if request.method == "GET":
-        return render_template('entrar.html', antes=antes)
+        return render_template('entrar.html', redirecionado=redirecionado)
 
     elif request.method == "POST":
         if not request.form.get('email'):
@@ -149,7 +149,7 @@ def entrar(antes=""):
 @app.route('/pessoas')
 def pessoas():
     if not session.get("nome"):
-        return entrar("antes")
+        return entrar(redirecionado=True)
 
     msg_sucesso = f'Parabéns, {session.get("nome")}! Você {session.get("fez")} com sucesso!'
 
@@ -163,7 +163,7 @@ def produtos():
     session['voltar_erro'] = '/produtos'
 
     if not session.get("nome"):
-        return entrar("antes")
+        return entrar(redirecionado=True)
 
     if session['carrinho_vazio']:
         session['livros_carrinho'] = []
@@ -192,7 +192,7 @@ def produtos():
 @app.route('/carrinho')
 def carrinho():
     if not session.get("nome"):
-        return entrar("antes")
+        return entrar(redirecionado=True)
 
     livro_removido = request.args.get('removido')
     if livro_removido:
