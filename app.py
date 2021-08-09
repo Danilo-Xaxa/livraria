@@ -29,6 +29,7 @@ todos_livros = [
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == "GET":
+        # tirar as linhas 33-38 ???
         if session.get("nome"):
             session['fez'] = 'entrou'
             session['carrinho_vazio'] = False
@@ -227,7 +228,7 @@ A página / mostra os botões de *entrar* e *cadastrar*, depois de entrado ou ca
 
 A lógica agora é conseguir (ou pelo menos tentar) acessar qualquer página vindo de qualquer página.
 
-TODO: BUG? Entrar redirecionado ainda deixa a route como /produtos, por exemplo
+TODO: Usar algo que não seja sessions pra mudar a route em vez de chamar entrar()
 TODO: /produtos
 TODO: /carrinho
 TODO: /erro
