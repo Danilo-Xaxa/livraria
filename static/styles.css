@@ -115,7 +115,7 @@ nav > a {
 
 #arte_guerra {
   background-image: url("imagens/arte_guerra.jpeg");
-  min-height: 105% !important;
+  min-height: 105%;
 }
 
 .responsivo {
@@ -214,10 +214,10 @@ footer {
 }
 
 th, td {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
-.tituloPessoas {
+.tituloPessoas, .tituloCarrinho {
   font-size: 3em !important;
 }
 
@@ -229,10 +229,19 @@ table {
 
 @media only screen and (max-width: 992px) {
   th, td {
-    font-size: 1em;
+    font-size: 0.8em;
   }
+  
   .tituloPessoas {
     font-size: 2em !important;
+  }
+
+  .tituloCarrinho {
+    margin-bottom: 1em !important;
+  }
+
+  footer {
+    margin-top: 0 !important;
   }
 }
 
@@ -243,3 +252,11 @@ table {
   font-size: 1.2em;
   padding: 0.5em 0;
 }
+
+/* main ul {
+  columns: 2;
+  list-style-position: inside;
+  list-style-type: none;
+  margin: auto 0 auto 0 !important;
+}
+*/
