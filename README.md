@@ -13,10 +13,10 @@ OBS: Não use nenhuma senha importante que você usa em outros lugares, pois ela
 
 ---
 
-O projeto foi desenvolvido com Python e seu framework Flask no back-end, sem nenhum uso de JavaScript (front-end estático). O banco de dados utilizado é o SQLite. Para a maioria dos detalhes de design/layout, o Bootstrap foi utilizado, especialmente o Bootstrap Examples Product.
+O projeto foi desenvolvido com Python e o framework Flask no back-end e JavaScript puro no front-end. O banco de dados utilizado é o SQLite. Para a maioria dos detalhes de design/layout, o Bootstrap foi utilizado, especialmente o Bootstrap Examples Product.
 
 A hospedagem foi realizada via PythonAnywhere.
 
 DX Livraria é o meu primeiro projeto usando Flask, desenvolvido a partir dos meus primeiros estudos do framework.
 
-O projeto é inspirado inspirado na aula de Flask do CS50 de Harvard.
+O projeto é inspirado inspirado na aula de Flask do curso CS50 de Harvard e tem fins apenas educacionais.
