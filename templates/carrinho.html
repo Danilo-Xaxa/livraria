@@ -26,8 +26,7 @@
             <tr id="{{ livro }}">
               <td scope="row">{{ loop.index }}</td>
               <td scope="row">{{ livro }}</td>
-              <td scope="row"><button type="button" id="remover {{ livro }}" onclick="removeLivro('{{ livro }}')">Remover</button></td>
-            </tr>
+              <td scope="row"><button class="btn btn-outline-secondary botaoRemover" style="color: #DDC8C4; background-color: #353a47;" type="button" id="remover {{ livro }}" onclick="removeLivro('{{ livro }}')">Remover</button></td>
           {% endfor %}
         </tbody>
     </table>

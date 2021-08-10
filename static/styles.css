@@ -260,3 +260,40 @@ table {
   margin: auto 0 auto 0 !important;
 }
 */
+.btn-secondary {
+  color: var(--mintCream);
+  background-color: black;
+  border-color: black;
+}
+
+.btn-secondary:hover {
+  color: var(--mintCream) !important;
+  background-color: var(--darkRed) !important;
+  border-color: var(--darkRed) !important;
+}
+
+input[type=checkbox]:checked + label {
+  color: var(--mintCream) !important;
+  background-color: var(--seaGreen) !important; 
+  border-color: var(--seaGreen) !important;
+}
+
+#divInputLivro, #irCarrinho {
+  width: 20% !important;
+}
+
+@media only screen and (max-width: 830px) {
+  .btn-secondary {
+    display: block !important;
+    width: 30% !important;
+  }
+
+  #divInputLivro, #irCarrinho {
+    width: 40% !important;
+  }
+}
+
+.botaoRemover:hover {
+  color: var(--mintCream) !important;
+  background-color: black !important;
+}
