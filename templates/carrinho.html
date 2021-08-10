@@ -14,13 +14,6 @@
           
       {% if livros_carrinho %}      
       <table class="table table-dark table-hover" style="margin-bottom: -2em !important;">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">E-mail</th>
-            </tr>
-        </thead>
         <tbody>
           {% for livro in livros_carrinho %}
             <tr id="{{ livro }}">
