@@ -7,7 +7,7 @@
   --seaGreen: #09814A;
   --darkRed: #8C1C13;
   --pacificBlue: #2AB7CA;
-  --charcoal: #353a47;
+  --charcoal: #353A47;
 }
 
 body {
@@ -296,4 +296,17 @@ input[type=checkbox]:checked + label {
 .botaoRemover:hover {
   color: var(--mintCream) !important;
   background-color: black !important;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+  color: #fff !important;
+  box-shadow: 0 0 0 0.25rem rgb(53, 58, 71, .5) !important;
+}
+
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: rgb(53, 58, 71, .3);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(9, 129, 74, 0.3);
 }
