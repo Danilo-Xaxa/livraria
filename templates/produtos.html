@@ -21,7 +21,9 @@
         {% if livros %}
           {% for livro in livros %}
             <input type="checkbox" class="btn-check" id="{{ livro }}" autocomplete="off" value="{{ livro }}" name="escolhido" style="display: none;">
-              <label class="btn btn-secondary" for="{{ livro }}" style="display: inline-block; width: 25%; margin: 4px auto 4px auto !important;">{{ livro }}</label>
+              <label class="btn btn-secondary" for="{{ livro }}" style="display: inline-block; width: 25%; margin: 4px auto 4px auto !important;"> {{ livro }}
+                <div class="bg-light shadow-sm mx-auto responsivo" style="width: 90%; height: 250px; border-radius: 21px; margin: 10px;" id="{{ livro|replace(' ', '_') }}"></div>
+              </label>
           {% endfor %}
 
         {% else %}
