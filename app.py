@@ -81,8 +81,6 @@ def cadastrar():
         
         servidor.sendmail(EMAIL_REMETENTE, email, msg_email.encode("utf8"))
 
-        session['fez'] = 'se cadastrou'
-
         session["nome"] = db.execute("SELECT nome FROM registrados WHERE email= ?", email)[0]['nome']
 
         session["livros_carrinho"] = []
@@ -125,8 +123,6 @@ def entrar(rota):
             session['msg_erro'] = 'Senha incorreta! Tente novamente.'
             return redirect('/erro')
 
-        session['fez'] = 'entrou'
-
         session["nome"] = db.execute("SELECT nome FROM registrados WHERE email= ?", email)[0]['nome']
 
         session["livros_carrinho"] = []
@@ -140,11 +136,9 @@ def pessoas():
         session['pagina_retorno'] = '/pessoas'
         return redirect(url_for('entrar', rota="indireta"))
 
-    msg_sucesso = f'Parabéns, {session.get("nome")}! Você {session.get("fez")} com sucesso!'
-
     nomes_emails = db.execute("SELECT nome, email FROM registrados")
 
-    return render_template('pessoas.html', nomes_emails=nomes_emails, msg_sucesso=msg_sucesso)
+    return render_template('pessoas.html', nomes_emails=nomes_emails)
 
 
 @app.route('/produtos', methods=['GET', 'POST'])
