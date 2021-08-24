@@ -99,48 +99,43 @@ nav > a {
 }
 
 #Romeu_e_Julieta {
-  background-image: url("imagens/romeu_julieta.jpg");
+  background-image: url("imagens/Romeu_e_Julieta.jpg");
   min-height: 90%;
 }
 
 #O_Pequeno_Príncipe {
-  background-image: url("imagens/pequeno_principe.jpg");
+  background-image: url("imagens/O_Pequeno_Príncipe.jpg");
   min-height: 130%;
 }
 
 #O_Mundo_de_Sofia {
-  background-image: url("imagens/mundo_sofia.jpg");
+  background-image: url("imagens/O_Mundo_de_Sofia.jpg");
   min-height: 93%;
 }
 
 #A_Arte_da_Guerra {
-  background-image: url("imagens/arte_guerra.jpeg");
-  min-height: 105%;
-}
-
-#A_Arte_da_Guerra {
-  background-image: url("imagens/arte_guerra.jpeg");
+  background-image: url("imagens/A_Arte_da_Guerra.jpeg");
   min-height: 105%;
 }
 
 #O_Chamado_de_Cthulhu {
-  background-image: url("imagens/chamado_cthulhu.jpg");
+  background-image: url("imagens/O_Chamado_de_Cthulhu.jpg");
 }
 
 #A_Metamorfose {
-  background-image: url("imagens/metamorfose.jpg");
+  background-image: url("imagens/A_Metamorfose.jpg");
 }
 
 #O_Código_Da_Vinci {
-  background-image: url("imagens/codigo_vinci.jpg");
+  background-image: url("imagens/O_Código_Da_Vinci.jpg");
 }
 
 #Os_Miseráveis {
-  background-image: url("imagens/miseraveis.jpg");
+  background-image: url("imagens/Os_Miseráveis.jpg");
 }
 
 #O_Alquimista {
-  background-image: url("imagens/alquimista.jpg");
+  background-image: url("imagens/O_Alquimista.jpg");
 }
 
 .responsivo {
