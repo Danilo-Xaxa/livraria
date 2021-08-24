@@ -85,7 +85,7 @@ def cadastrar():
 
         session["livros_carrinho"] = []
 
-        return redirect(session.get('pagina_retorno') or '/pessoas')  # mudar pra redirect('/produtos')
+        return redirect(session.get('pagina_retorno') or '/produtos')
 
 
 @app.route('/entrar/rota_<rota>', methods=['GET', 'POST'])
@@ -127,7 +127,7 @@ def entrar(rota):
 
         session["livros_carrinho"] = []
 
-        return redirect(session.get('pagina_retorno') or '/pessoas')  # mudar pra redirect('/produtos')
+        return redirect(session.get('pagina_retorno') or '/produtos')
 
 
 @app.route('/pessoas')
