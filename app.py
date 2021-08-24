@@ -32,12 +32,12 @@ def index():
         return render_template('index.html')
 
 
-@app.route('/cadastrar', methods=['GET', 'POST'])
-def cadastrar():
-    session['voltar_erro'] = '/cadastrar'
+@app.route('/cadastrar/por_<pagina>', methods=['GET', 'POST'])
+def cadastrar(pagina):
+    session['voltar_erro'] = f"/cadastrar/por_{pagina}"
 
     if request.method == "GET":
-        return render_template('cadastrar.html')
+        return render_template('cadastrar.html', pagina=pagina)
 
     elif request.method == "POST":
         dicios = db.execute("SELECT email FROM registrados")
@@ -85,15 +85,18 @@ def cadastrar():
 
         session["livros_carrinho"] = []
 
-        return redirect(session.get('pagina_retorno') or '/produtos')
+        if pagina in ["produtos", "carrinho", "pessoas"]:
+            return redirect('/' + pagina)
+        else:
+            return redirect('/produtos')
 
 
-@app.route('/entrar/rota_<rota>', methods=['GET', 'POST'])
-def entrar(rota):
-    session['voltar_erro'] = f"/entrar/rota_{rota}"
+@app.route('/entrar/por_<pagina>', methods=['GET', 'POST'])
+def entrar(pagina):
+    session['voltar_erro'] = f"/entrar/por_{pagina}"
 
     if request.method == "GET":
-        return render_template('entrar.html', rota=rota)
+        return render_template('entrar.html', pagina=pagina)
 
     elif request.method == "POST":
         if not request.form.get('email'):
@@ -127,14 +130,16 @@ def entrar(rota):
 
         session["livros_carrinho"] = []
 
-        return redirect(session.get('pagina_retorno') or '/produtos')
+        if pagina in ["produtos", "carrinho", "pessoas"]:
+            return redirect('/' + pagina)
+        else:
+            return redirect('/produtos')
 
 
 @app.route('/pessoas')
 def pessoas():
     if not session.get("nome"):
-        session['pagina_retorno'] = '/pessoas'
-        return redirect(url_for('entrar', rota="indireta"))
+        return redirect(url_for('entrar', pagina="pessoas"))
 
     nomes_emails = db.execute("SELECT nome, email FROM registrados")
 
@@ -144,8 +149,7 @@ def pessoas():
 @app.route('/produtos', methods=['GET', 'POST'])
 def produtos():
     if not session.get("nome"):
-        session['pagina_retorno'] = '/produtos'
-        return redirect(url_for('entrar', rota="indireta"))
+        return redirect(url_for('entrar', pagina="produtos"))
 
     session['voltar_erro'] = '/produtos'
         
@@ -176,8 +180,7 @@ def produtos():
 @app.route('/carrinho')
 def carrinho():
     if not session.get("nome"):
-        session['pagina_retorno'] = '/carrinho'
-        return redirect(url_for('entrar', rota="indireta"))
+        return redirect(url_for('entrar', pagina="carrinho"))
 
     livro_removido = request.args.get('removido')
     if livro_removido:
