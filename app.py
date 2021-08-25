@@ -177,21 +177,32 @@ def produtos():
     return redirect('/carrinho')
 
 
-@app.route('/carrinho')
+@app.route('/carrinho', methods=['GET', 'POST'])
 def carrinho():
     if not session.get("nome"):
         return redirect(url_for('entrar', pagina="carrinho"))
 
-    livro_removido = request.args.get('removido')
-    if livro_removido:
-        session['livros_carrinho'].remove(livro_removido)
-    
-    try:
-        livros_carrinho = session['livros_carrinho']
-    except:
-        livros_carrinho = []
+    if request.method == "GET":
+        livro_removido = request.args.get('removido')
+        if livro_removido:
+            session['livros_carrinho'].remove(livro_removido)
+        
+        try:
+            livros_carrinho = session['livros_carrinho']
+        except:
+            livros_carrinho = []
 
-    return render_template('carrinho.html', livros_carrinho=livros_carrinho)
+        return render_template('carrinho.html', livros_carrinho=livros_carrinho)
+
+    elif request.method == "POST":
+        livros_carrinho = session['livros_carrinho']
+
+        #TODO: email com pdfs
+
+        session['msg_erro'] = f'Compra realizada com sucesso!\n Os livros foram enviados para o seu e-mail.'
+        session['livros_carrinho'] = []
+
+        return redirect('/erro')  # TODO: não usar a route /erro
 
 
 @app.route("/desconectar")
