@@ -282,8 +282,8 @@ table {
 */
 .btn-secondary {
   color: var(--mintCream);
-  background-color: #1F0322;
-  border-color: #1F0322;
+  background-color: #00120B;
+  border-color: #00120B;
 }
 
 .btn-secondary:hover {

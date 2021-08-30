@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, flash, request, session
 from flask.helpers import url_for
 from flask_session import Session
+from threading import Thread
 from cs50 import SQL
 from smtplib import SMTP
 from email.message import EmailMessage
@@ -64,11 +65,11 @@ def cadastrar(pagina):
             return redirect('/erro')
 
         EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
-        EMAIL_SENHA = getenv('EMAIL_SENHA')
+        SENHA_REMETENTE = getenv('SENHA_REMETENTE')
 
         servidor = SMTP("smtp.gmail.com", 587)
         servidor.starttls()
-        servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
+        servidor.login(EMAIL_REMETENTE, SENHA_REMETENTE)
 
         nome = request.form.get('nome').strip().title()
         email = request.form.get('email').strip().lower()
@@ -196,35 +197,45 @@ def carrinho():
         return render_template('carrinho.html', livros_carrinho=livros_carrinho)
 
     elif request.method == "POST":
-        EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
-        EMAIL_SENHA = getenv('EMAIL_SENHA')
-        email = db.execute("SELECT email FROM registrados WHERE nome = ?", session.get('nome'))[0]['email']
+        nome = session.get("nome")
+        livros_carrinho = session.get("livros_carrinho")
 
-        msg = EmailMessage()
-        msg['From'] = EMAIL_REMETENTE
-        msg['To'] = email
-        msg['Subject'] = 'Seus livros comprados'
+        class EnviarLivros(Thread):
+            def __init__(self, request):
+                Thread.__init__(self)
+                self.request = request
 
-        corpo = f'Olá, {session.get("nome")}! Aqui estão os livros que você comprou conosco, volte sempre!'
-        msg.set_content(corpo)
+            def run(self):
+                EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
+                SENHA_REMETENTE = getenv('SENHA_REMETENTE') or getenv('EMAIL_SENHA')
+                email = db.execute("SELECT email FROM registrados WHERE nome = ?", nome)[0]['email']
 
-        for livro in session['livros_carrinho']:
-            arquivo = f"{livro.replace(' ', '_')}.pdf"
-            with open(f'{path.dirname(__file__)}\static\pdfs\{arquivo}', 'rb') as conteudo:
-                msg.add_attachment(conteudo.read(), maintype='application/pdf', subtype='pdf', filename=arquivo)
+                msg = EmailMessage()
+                msg['From'] = EMAIL_REMETENTE
+                msg['To'] = email
+                msg['Subject'] = 'Seus livros comprados'
 
-        texto = msg.as_string()
+                corpo = f'Olá, {nome}! Aqui estão os livros que você comprou conosco, volte sempre!'
+                msg.set_content(corpo)
 
-        servidor = SMTP("smtp.gmail.com", 587)
-        servidor.starttls()
-        servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
+                for livro in livros_carrinho:
+                    arquivo = f"{livro.replace(' ', '_')}.pdf"
+                    with open(f'{path.dirname(__file__)}\static\pdfs\{arquivo}', 'rb') as conteudo:
+                        msg.add_attachment(conteudo.read(), maintype='application/pdf', subtype='pdf', filename=arquivo)
 
-        servidor.sendmail(EMAIL_REMETENTE, email, texto)
+                texto = msg.as_string()
 
-        session['msg_erro'] = f'Compra realizada com sucesso!\n Os livros foram enviados para o seu e-mail.'
+                servidor = SMTP("smtp.gmail.com", 587)
+                servidor.starttls()
+                servidor.login(EMAIL_REMETENTE, SENHA_REMETENTE)
+
+                servidor.sendmail(EMAIL_REMETENTE, email, texto)
+            
+        minha_thread = EnviarLivros(request.__copy__())
+        minha_thread.start()
+
         session['livros_carrinho'] = []
-
-        return redirect('/erro')
+        return render_template('compra.html')
 
 
 @app.route("/desconectar")
@@ -241,4 +252,3 @@ def desconectar():
 @app.route('/erro')
 def erro():
     return render_template('erro.html', msg_erro=session['msg_erro'], voltar_erro=session['voltar_erro'])
-    
