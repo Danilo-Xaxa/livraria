@@ -3,7 +3,8 @@ from flask.helpers import url_for
 from flask_session import Session
 from cs50 import SQL
 from smtplib import SMTP
-from os import getenv
+from email.message import EmailMessage
+from os import getenv, path
 
 
 app = Flask(__name__)
@@ -195,9 +196,30 @@ def carrinho():
         return render_template('carrinho.html', livros_carrinho=livros_carrinho)
 
     elif request.method == "POST":
-        livros_carrinho = session['livros_carrinho']
+        EMAIL_REMETENTE = getenv('EMAIL_REMETENTE')
+        EMAIL_SENHA = getenv('EMAIL_SENHA')
+        email = db.execute("SELECT email FROM registrados WHERE nome = ?", session.get('nome'))[0]['email']
 
-        #TODO: email com pdfs
+        msg = EmailMessage()
+        msg['From'] = EMAIL_REMETENTE
+        msg['To'] = email
+        msg['Subject'] = 'Seus livros comprados'
+
+        corpo = f'Olá, {session.get("nome")}! Aqui estão os livros que você comprou conosco, volte sempre!'
+        msg.set_content(corpo)
+
+        for livro in session['livros_carrinho']:
+            arquivo = f"{livro.replace(' ', '_')}.pdf"
+            with open(f'{path.dirname(__file__)}\static\pdfs\{arquivo}', 'rb') as conteudo:
+                msg.add_attachment(conteudo.read(), maintype='application/pdf', subtype='pdf', filename=arquivo)
+
+        texto = msg.as_string()
+
+        servidor = SMTP("smtp.gmail.com", 587)
+        servidor.starttls()
+        servidor.login(EMAIL_REMETENTE, EMAIL_SENHA)
+
+        servidor.sendmail(EMAIL_REMETENTE, email, texto)
 
         session['msg_erro'] = f'Compra realizada com sucesso!\n Os livros foram enviados para o seu e-mail.'
         session['livros_carrinho'] = []
