@@ -252,3 +252,9 @@ def desconectar():
 @app.route('/erro')
 def erro():
     return render_template('erro.html', msg_erro=session['msg_erro'], voltar_erro=session['voltar_erro'])
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    session['msg_erro'] = 'Página inválida... Evite navegar diretamente pela URL neste site, por favor.'
+    return redirect('/erro')
