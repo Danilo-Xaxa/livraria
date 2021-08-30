@@ -4,7 +4,7 @@
   --blackHalf: rgba(0, 0, 0, 0.5);
   --mintCream: #EFF9F0;
   --champagnePink:#DDC8C4;
-  --seaGreen: #09814A;
+  --mossGreen: #828C51; /*2E933C, 2B9720, 828C51, 297373, 1F0322, 00120B*/
   --darkRed: #8C1C13;
   --pacificBlue: #2AB7CA;
   --charcoal: #353A47;
@@ -282,8 +282,8 @@ table {
 */
 .btn-secondary {
   color: var(--mintCream);
-  background-color: black;
-  border-color: black;
+  background-color: #1F0322;
+  border-color: #1F0322;
 }
 
 .btn-secondary:hover {
@@ -294,8 +294,8 @@ table {
 
 input[type=checkbox]:checked + label {
   color: var(--mintCream) !important;
-  background-color: var(--seaGreen) !important; 
-  border-color: var(--seaGreen) !important;
+  background-color: var(--mossGreen) !important; 
+  border-color: var(--mossGreen) !important;
 }
 
 #divInputLivro, #irCarrinho {

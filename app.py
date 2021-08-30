@@ -224,7 +224,7 @@ def carrinho():
         session['msg_erro'] = f'Compra realizada com sucesso!\n Os livros foram enviados para o seu e-mail.'
         session['livros_carrinho'] = []
 
-        return redirect('/erro')  # TODO: não usar a route /erro
+        return redirect('/erro')
 
 
 @app.route("/desconectar")
