@@ -138,6 +138,10 @@ nav > a {
   background-image: url("imagens/O_Alquimista.jpg");
 }
 
+#A_República {
+  background-image: url("imagens/A_República.jpg");
+}
+
 .responsivo {
   background-position: center;
   background-repeat: no-repeat;
