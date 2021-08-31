@@ -308,8 +308,7 @@ input[type=checkbox]:checked + label {
 
 @media only screen and (max-width: 830px) {
   .btn-secondary {
-    display: block !important;
-    width: 30% !important;
+    width: 50% !important;
   }
 
   #divInputLivro, #irCarrinho {
@@ -347,5 +346,9 @@ input[type=checkbox]:checked + label {
 @media only screen and (max-width: 400px) {
   .table_nome {
     display: none !important;
+  }
+  
+  #divInputLivro {
+    width: 50% !important;
   }
 }
