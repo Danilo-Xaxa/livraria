@@ -69,7 +69,6 @@ body {
   background-color: #e5e5e5;
 }
 
-
 /*
  * Extra utilities
  */
@@ -284,6 +283,7 @@ table {
   margin: auto 0 auto 0 !important;
 }
 */
+
 .btn-secondary {
   color: var(--mintCream);
   background-color: #00120B;
@@ -333,4 +333,19 @@ input[type=checkbox]:checked + label {
   border-color: rgb(53, 58, 71, .3);
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgb(9, 129, 74, 0.3);
+}
+
+@media only screen and (max-width: 500px) {
+  .table_num {
+    display: none !important;
+  }
+  th, td {
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .table_nome {
+    display: none !important;
+  }
 }

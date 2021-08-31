@@ -13,16 +13,16 @@
         <table class="table table-dark table-hover" style="margin-bottom: -2em !important;">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
+                    <th scope="col" class="table_num">#</th>
+                    <th scope="col" class="table_nome">Nome</th>
                     <th scope="col">E-mail</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in nomes_emails %}
                 <tr>
-                    <td scope="row">{{ loop.index }}</td>
-                    <td scope="row">{{ item.nome }}</td>
+                    <td scope="row" class="table_num">{{ loop.index }}</td>
+                    <td scope="row" class="table_nome">{{ item.nome }}</td>
                     <td scope="row">{{ item.email }}</td>
                 </tr>
                 {% endfor %}

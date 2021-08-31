@@ -16,15 +16,15 @@ Session(app)
 db = SQL("sqlite:///pessoas.db")
 
 todos_livros = [
-    #'O Mundo de Sofia',
     #'O Código Da Vinci',
+    #'O Mundo de Sofia',
     #'O Pequeno Príncipe',
-    'Os Miseráveis',
-    'A Metamorfose',
-    #'O Alquimista',
     'A Arte da Guerra',
-    'O Chamado de Cthulhu',
+    'A Metamorfose',
     'Romeu e Julieta',
+    'Os Miseráveis',
+    #'O Alquimista',
+    'O Chamado de Cthulhu',
     'A República'
 ]
 
