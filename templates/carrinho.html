@@ -10,21 +10,21 @@
 
     <h1 class="display-4 fw-normal tituloCarrinho" style="margin-top: .8em !important; margin-bottom: -1em;"> Seu carrinho de compras: </h1>
 
-    <div class="col-md-5 p-lg-5 mx-auto my-5" style="width: 50% !important;">
+    <div class="col-md-5 p-lg-5 mx-auto my-5 divsDaTabela" style="width: 60%;">
+    <form action="/carrinho" method="post"></form>
           
       {% if livros_carrinho %}      
-      <table class="table table-dark table-hover" style="margin-bottom: -2em !important;">
+      <table class="table table-dark table-hover tabelaCarrinho" style="margin-bottom: -2em !important;">
         <tbody>
           {% for livro in livros_carrinho %}
             <tr id="{{ livro }}">
-              <td scope="row">{{ loop.index }}</td>
+              <td scope="row" class="numerador">{{ loop.index }}</td>
               <td scope="row">{{ livro }}</td>
               <td scope="row"><button class="btn btn-outline-secondary botaoRemover" style="color: #DDC8C4; background-color: #353a47;" type="button" id="remover {{ livro }}" onclick="removeLivro('{{ livro }}')">Remover</button></td>
           {% endfor %}
         </tbody>
     </table>
-    <form action="/carrinho" method="post">
-    <button name="comprar" class="w-100 btn btn-lg btn-primary" type="submit" value="comprar" style="display: block !important; margin: 45px auto 0 auto !important;" id="irCarrinho">Comprar</button>
+    <button name="comprar" class="w-100 btn btn-lg btn-primary" type="submit" value="comprar" style="display: block !important; margin: 45px auto 0 auto !important;" id="irComprar">Comprar</button>
     </form>
     </div>
 

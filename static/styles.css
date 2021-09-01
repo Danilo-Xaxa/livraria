@@ -237,7 +237,7 @@ footer {
 }
 
 th, td {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 .tituloPessoas, .tituloCarrinho {
@@ -250,11 +250,11 @@ table {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 992px) {
-  th, td {
-    font-size: 0.8em;
+@media only screen and (max-width: 992px) {  
+  .divsDaTabela {
+    width: 90% !important;
   }
-  
+
   .tituloPessoas {
     font-size: 2em !important;
   }
@@ -302,7 +302,7 @@ input[type=checkbox]:checked + label {
   border-color: var(--mossGreen) !important;
 }
 
-#divInputLivro, #irCarrinho {
+#divInputLivro, #irCarrinho, #irComprar {
   width: 20% !important;
 }
 
@@ -311,7 +311,7 @@ input[type=checkbox]:checked + label {
     width: 50% !important;
   }
 
-  #divInputLivro, #irCarrinho {
+  #divInputLivro, #irCarrinho, #irComprar {
     width: 40% !important;
   }
 }
@@ -335,11 +335,8 @@ input[type=checkbox]:checked + label {
 }
 
 @media only screen and (max-width: 500px) {
-  .table_num {
+  .numerador {
     display: none !important;
-  }
-  th, td {
-    font-size: 0.7em;
   }
 }
 
@@ -349,6 +346,16 @@ input[type=checkbox]:checked + label {
   }
   
   #divInputLivro {
+    width: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .tabelaCarrinho td {
+    font-size: 1.1em;
+  }
+
+  #irComprar {
     width: 50% !important;
   }
 }

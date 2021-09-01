@@ -8,12 +8,12 @@
 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" style="background-color: #DDC8C4 !important; padding: 0 !important;">
     <h1 class="display-4 fw-normal tituloPessoas" style="margin-top: .8em !important; margin-bottom: -1em !important;"> Tenha os contatos do nosso Clube do Livro!<br>Estes são todos os membros: </h1>
 
-    <div class="col-md-5 p-lg-5 mx-auto my-5" style="width: 50% !important;">
+    <div class="col-md-5 p-lg-5 mx-auto my-5 divsDaTabela" style="width: 60%;">
 
-        <table class="table table-dark table-hover" style="margin-bottom: -2em !important;">
+        <table class="table table-dark table-hover pessoas" style="margin-bottom: -2em !important;">
             <thead>
                 <tr>
-                    <th scope="col" class="table_num">#</th>
+                    <th scope="col" class="numerador">#</th>
                     <th scope="col" class="table_nome">Nome</th>
                     <th scope="col">E-mail</th>
                 </tr>
@@ -21,7 +21,7 @@
             <tbody>
                 {% for item in nomes_emails %}
                 <tr>
-                    <td scope="row" class="table_num">{{ loop.index }}</td>
+                    <td scope="row" class="numerador">{{ loop.index }}</td>
                     <td scope="row" class="table_nome">{{ item.nome }}</td>
                     <td scope="row">{{ item.email }}</td>
                 </tr>
