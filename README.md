@@ -1,7 +1,7 @@
 # DX Livraria
 [Acesse aqui](https://xaxadanilo.pythonanywhere.com/)
 
-DX Livraria é uma aplicação web que simula um e-commerce de livros reais, onde você pode criar ou acessar sua conta, ver quais são os livros em estoque, adicionar livros ao seu carrinho, comprar os livros (que chegarão em seu e-mail em .pdf) e ver quais são os membros do Clube do Livro (pessoas que estão cadastradas no site).
+DX Livraria é uma aplicação web que simula um e-commerce de livros reais onde você pode: criar ou acessar sua conta, ver quais são os livros em estoque, adicionar livros ao seu carrinho, comprar os livros (que chegarão em seu e-mail em .pdf) e ver quais são os membros do Clube do Livro (pessoas que estão cadastradas no site).
 
 Ao acessar o site sem ter se cadastrado ou entrado ainda, o usuário vê a página inicial (home). Para acessar as outras páginas, o usuário pode navegar pelo cabeçalho do site. As páginas dos livros em estoque, carrinho e Clube do Livro só podem ser acessados quando o usuário cria uma conta ou entra.
 
